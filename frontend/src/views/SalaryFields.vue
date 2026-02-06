@@ -9,7 +9,9 @@ import {
   MinusCircle,
   Edit,
   Trash2,
-  ArrowLeft
+  ArrowLeft,
+  X,
+  Tag
 } from 'lucide-vue-next'
 import { useRouter } from 'vue-router'
 
@@ -265,75 +267,94 @@ onMounted(() => {
       </div>
     </div>
 
-    <el-dialog
-      v-model="dialogVisible"
-      :title="isEditing ? '编辑字段' : '添加字段'"
-      width="500px"
-      :close-on-click-modal="false"
-    >
-      <form @submit.prevent="submit" class="field-form">
-        <div class="form-group">
-          <label class="form-label">字段名称 *</label>
-          <input
-            v-model="form.name"
-            type="text"
-            class="form-control"
-            placeholder="如：春节补贴"
-            @blur="generateFieldKey"
-          />
-        </div>
+    <!-- Add/Edit Field Dialog -->
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="dialogVisible" class="modal-overlay" @click.self="dialogVisible = false">
+          <div class="modal-container">
+            <div class="modal-header">
+              <h2>{{ isEditing ? '编辑字段' : '添加字段' }}</h2>
+              <button class="close-btn" @click="dialogVisible = false">
+                <X :size="18" />
+              </button>
+            </div>
 
-        <div class="form-group">
-          <label class="form-label">字段标识 *</label>
-          <input
-            v-model="form.field_key"
-            type="text"
-            class="form-control"
-            placeholder="如：spring_bonus"
-            :disabled="isEditing"
-            pattern="^[a-z][a-z0-9_]*$"
-          />
-          <p class="form-hint">只能包含小写字母、数字和下划线，以字母开头</p>
-        </div>
+            <form @submit.prevent="submit" class="modal-body">
+              <!-- 基本信息 -->
+              <div class="form-section">
+                <div class="section-header">
+                  <Tag :size="18" class="section-icon" />
+                  <h3>基本信息</h3>
+                </div>
+                <div class="form-group">
+                  <label>字段名称 *</label>
+                  <input
+                    v-model="form.name"
+                    type="text"
+                    placeholder="如：春节补贴"
+                    @blur="generateFieldKey"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>字段标识 *</label>
+                  <input
+                    v-model="form.field_key"
+                    type="text"
+                    placeholder="如：spring_bonus"
+                    :disabled="isEditing"
+                    pattern="^[a-z][a-z0-9_]*$"
+                    required
+                  />
+                  <p class="form-hint">只能包含小写字母、数字和下划线，以字母开头</p>
+                </div>
+              </div>
 
-        <div class="form-group">
-          <label class="form-label">字段类型 *</label>
-          <select v-model="form.field_type" class="form-control" :disabled="isEditing">
-            <option value="income">收入</option>
-            <option value="deduction">扣款</option>
-          </select>
-        </div>
+              <!-- 字段类型 -->
+              <div class="form-section">
+                <div class="section-header">
+                  <Settings :size="18" class="section-icon" />
+                  <h3>字段设置</h3>
+                </div>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label>字段类型 *</label>
+                    <select v-model="form.field_type" :disabled="isEditing">
+                      <option value="income">收入</option>
+                      <option value="deduction">扣款</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>计算类别 *</label>
+                    <select v-model="form.category">
+                      <option v-for="cat in categoryOptions" :key="cat.key" :value="cat.key">
+                        {{ cat.label }}
+                      </option>
+                    </select>
+                    <p class="form-hint">决定该字段在统计图表中的归类方式</p>
+                  </div>
+                </div>
+                <div class="form-group" v-if="form.field_type === 'income'">
+                  <label class="checkbox-label">
+                    <input type="checkbox" v-model="form.is_non_cash" />
+                    <span>非现金福利（不计入实际到手）</span>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>显示顺序</label>
+                  <input v-model.number="form.display_order" type="number" min="0" />
+                </div>
+              </div>
+            </form>
 
-        <div class="form-group">
-          <label class="form-label">计算类别 *</label>
-          <select v-model="form.category" class="form-control">
-            <option v-for="cat in categoryOptions" :key="cat.key" :value="cat.key">
-              {{ cat.label }}
-            </option>
-          </select>
-          <p class="form-hint">决定该字段在统计图表中的归类方式</p>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" @click="dialogVisible = false">取消</button>
+              <button type="button" class="btn btn-primary" @click="submit">保存</button>
+            </div>
+          </div>
         </div>
-
-        <div class="form-group" v-if="form.field_type === 'income'">
-          <label class="checkbox-label">
-            <input type="checkbox" v-model="form.is_non_cash" class="form-checkbox" />
-            <span>非现金福利（不计入实际到手）</span>
-          </label>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">显示顺序</label>
-          <input v-model.number="form.display_order" type="number" class="form-control" min="0" />
-        </div>
-      </form>
-
-      <template #footer>
-        <div class="dialog-footer">
-          <button class="btn btn-secondary" @click="dialogVisible = false">取消</button>
-          <button class="btn btn-primary" @click="submit">保存</button>
-        </div>
-      </template>
-    </el-dialog>
+      </Transition>
+    </Teleport>
   </div>
 </template>
 
@@ -673,52 +694,262 @@ onMounted(() => {
   }
 }
 
-/* Dialog styles - Claude/Anthropic style */
-:deep(.el-dialog) {
+/* ============================================
+   Custom Modal - Claude/Anthropic Style
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-container {
+  background: white;
   border-radius: 16px;
-  overflow: hidden;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
-:deep(.el-dialog__header) {
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid #e5e0dc;
-  margin-right: 0;
 }
 
-:deep(.el-dialog__title) {
+.modal-header h2 {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.25rem;
   font-weight: 500;
   color: #2d2a26;
+  margin: 0;
 }
 
-:deep(.el-dialog__headerbtn) {
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 32px;
-  height: 32px;
+.close-btn {
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
   border-radius: 8px;
-}
-
-:deep(.el-dialog__headerbtn:hover) {
-  background: #f5f3f1;
-}
-
-:deep(.el-dialog__headerbtn .el-dialog__close) {
   color: #6b6560;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-:deep(.el-dialog__headerbtn:hover .el-dialog__close) {
+.close-btn:hover {
+  background: #f5f3f1;
   color: #2d2a26;
 }
 
-:deep(.el-dialog__body) {
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
   padding: 1.5rem 2rem;
 }
 
-:deep(.el-dialog__footer) {
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
   padding: 1.25rem 2rem;
   border-top: 1px solid #e5e0dc;
+}
+
+/* Form Sections */
+.form-section {
+  margin-bottom: 2rem;
+}
+
+.form-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Form Sections */
+.form-section {
+  margin-bottom: 2rem;
+}
+
+.form-section:last-child {
+  margin-bottom: 0;
+}
+
+/* Modal-specific section header (no background) */
+.modal-body .section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.modal-body .section-header .section-icon {
+  color: #da7756;
+}
+
+.modal-body .section-header h3 {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #2d2a26;
+  margin: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.form-group label {
+  font-size: 0.8125rem;
+  font-weight: 450;
+  color: #6b6560;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.625rem 0.875rem;
+  border: 1px solid #e5e0dc;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  background: #fdfcfb;
+  color: #2d2a26;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: #d5d0cc;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #da7756;
+  background: white;
+  box-shadow: 0 0 0 2px rgba(218, 119, 86, 0.1);
+}
+
+.form-group input:disabled,
+.form-group select:disabled {
+  background: #f5f3f1;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 60px;
+  font-family: inherit;
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: #9a9590;
+  margin-top: -0.125rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #2d2a26;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #da7756;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.btn-secondary {
+  background: #f5f3f1;
+  color: #2d2a26;
+}
+
+.btn-secondary:hover {
+  background: #ebe8e5;
+}
+
+.btn-primary {
+  background: #da7756;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #c4684a;
+}
+
+/* Modal transitions */
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.modal-enter-active .modal-container,
+.modal-leave-active .modal-container {
+  transition: transform 0.2s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-from .modal-container,
+.modal-leave-to .modal-container {
+  transform: scale(0.96);
+}
+
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-container {
+    max-height: 100vh;
+    border-radius: 0;
+  }
 }
 </style>

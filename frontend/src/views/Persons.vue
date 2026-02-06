@@ -4,7 +4,7 @@ import api from '../utils/axios'
 import { useUserStore } from '../store/user'
 import { useStatsStore } from '../store/stats'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { Plus, Users, DollarSign, Trash2, Edit, User, TrendingUp, Calendar, Award } from 'lucide-vue-next'
+import { Plus, Users, DollarSign, Trash2, Edit, User, TrendingUp, X } from 'lucide-vue-next'
 import PageContainer from '../components/PageContainer.vue'
 import PageHeader from '../components/PageHeader.vue'
 import StatsCards from '../components/StatsCards.vue'
@@ -165,10 +165,10 @@ onMounted(load)
     <!-- Header Section -->
     <PageHeader title="信息管理" subtitle="管理用户信息">
       <template #controls>
-        <el-button type="primary" @click="openCreate" class="add-button">
+        <button class="btn btn-primary add-button" @click="openCreate">
           <Plus class="button-icon" />
           添加用户
-        </el-button>
+        </button>
       </template>
     </PageHeader>
 
@@ -238,104 +238,99 @@ onMounted(load)
         <p class="empty-description">
           还没有添加任何用户，点击下面的按钮开始添加
         </p>
-        <el-button type="primary" size="large" @click="openCreate" class="empty-action">
-          <Plus class="button-icon" />
+        <button type="button" class="btn btn-primary btn-large" @click="openCreate">
+          <Plus :size="16" />
           添加第一位用户
-        </el-button>
+        </button>
       </div>
     </el-card>
 
     <!-- Add/Edit Person Dialog -->
-    <el-dialog 
-      v-model="dialogVisible" 
-      :title="dialogTitle" 
-      width="500px"
-      class="person-dialog"
-    >
-      <el-form :model="form" label-width="140px">
-        <el-form-item label="姓名" required>
-          <el-input 
-            v-model="form.name" 
-            placeholder="请输入姓名"
-            maxlength="64"
-            show-word-limit
-          />
-        </el-form-item>
-        <el-form-item label="备注">
-          <el-input 
-            v-model="form.note" 
-            type="textarea" 
-            placeholder="请输入备注"
-            :rows="3"
-            maxlength="255"
-            show-word-limit
-          />
-        </el-form-item>
-        <el-divider content-position="left">历史累计值（加入系统前）</el-divider>
-        <el-form-item label="养老保险历史累计">
-          <el-input-number 
-            v-model="form.pension_history" 
-            :min="0"
-            :precision="2"
-            :step="100"
-            placeholder="输入加入系统前的累计金额"
-            style="width: 100%"
-          />
-          <span style="color: #909399; font-size: 12px; margin-left: 8px;">元</span>
-        </el-form-item>
-        <el-form-item label="医疗保险历史累计">
-          <el-input-number 
-            v-model="form.medical_history" 
-            :min="0"
-            :precision="2"
-            :step="100"
-            placeholder="输入加入系统前的累计金额"
-            style="width: 100%"
-          />
-          <span style="color: #909399; font-size: 12px; margin-left: 8px;">元</span>
-        </el-form-item>
-        <el-form-item label="住房公积金历史累计">
-          <el-input-number 
-            v-model="form.housing_fund_history" 
-            :min="0"
-            :precision="2"
-            :step="100"
-            placeholder="输入加入系统前的累计金额"
-            style="width: 100%"
-          />
-          <span style="color: #909399; font-size: 12px; margin-left: 8px;">元</span>
-        </el-form-item>
-      </el-form>
-      
-      <template #footer>
-        <div class="dialog-footer">
-          <el-button @click="dialogVisible = false">取消</el-button>
-          <el-button type="primary" @click="submit">确定</el-button>
+    <Teleport to="body">
+      <Transition name="modal">
+        <div v-if="dialogVisible" class="modal-overlay" @click.self="dialogVisible = false">
+          <div class="modal-container">
+            <div class="modal-header">
+              <h2>{{ isEditing ? '编辑人员' : '添加人员' }}</h2>
+              <button class="close-btn" @click="dialogVisible = false">
+                <X :size="18" />
+              </button>
+            </div>
+
+            <form @submit.prevent="submit" class="modal-body">
+              <!-- 基本信息 -->
+              <div class="form-section">
+                <div class="section-header">
+                  <User :size="18" class="section-icon" />
+                  <h3>基本信息</h3>
+                </div>
+                <div class="form-grid">
+                  <div class="form-group">
+                    <label>姓名 *</label>
+                    <input
+                      v-model="form.name"
+                      type="text"
+                      placeholder="请输入姓名"
+                      maxlength="64"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>备注</label>
+                  <textarea
+                    v-model="form.note"
+                    placeholder="请输入备注（可选）"
+                    rows="2"
+                    maxlength="255"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- 历史累计值 -->
+              <div class="form-section">
+                <div class="section-header">
+                  <TrendingUp :size="18" class="section-icon" />
+                  <h3>历史累计值（加入系统前）</h3>
+                </div>
+                <div class="form-grid form-grid-3">
+                  <div class="form-group">
+                    <label>养老保险</label>
+                    <div class="input-with-unit">
+                      <input v-model.number="form.pension_history" type="number" step="0.01" min="0" placeholder="0" />
+                      <span class="input-unit">元</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>医疗保险</label>
+                    <div class="input-with-unit">
+                      <input v-model.number="form.medical_history" type="number" step="0.01" min="0" placeholder="0" />
+                      <span class="input-unit">元</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>住房公积金</label>
+                    <div class="input-with-unit">
+                      <input v-model.number="form.housing_fund_history" type="number" step="0.01" min="0" placeholder="0" />
+                      <span class="input-unit">元</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" @click="dialogVisible = false">取消</button>
+              <button type="button" class="btn btn-primary" @click="submit">保存</button>
+            </div>
+          </div>
         </div>
-      </template>
-    </el-dialog>
+      </Transition>
+    </Teleport>
   </PageContainer>
 </template>
 
 <style scoped>
-
-.add-button {
-  border-radius: 8px;
-  padding: 12px 20px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.add-button:hover {
-  box-shadow: 0 2px 8px rgba(218, 119, 86, 0.2);
-}
-
-.button-icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-}
-
 .persons-list-card {
   border-radius: 12px;
   overflow: hidden;
@@ -611,126 +606,251 @@ onMounted(load)
   }
 }
 
-/* Dialog styles - Claude/Anthropic style */
-.person-dialog :deep(.el-dialog) {
+/* ============================================
+   Custom Modal - Claude/Anthropic Style
+   ============================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-container {
+  background: white;
   border-radius: 16px;
-  overflow: hidden;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
-.person-dialog :deep(.el-dialog__header) {
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 1.5rem 2rem;
   border-bottom: 1px solid #e5e0dc;
-  margin-right: 0;
 }
 
-.person-dialog :deep(.el-dialog__title) {
+.modal-header h2 {
   font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.25rem;
   font-weight: 500;
   color: #2d2a26;
+  margin: 0;
 }
 
-.person-dialog :deep(.el-dialog__headerbtn) {
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 32px;
-  height: 32px;
+.close-btn {
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
   border-radius: 8px;
-}
-
-.person-dialog :deep(.el-dialog__headerbtn:hover) {
-  background: #f5f3f1;
-}
-
-.person-dialog :deep(.el-dialog__headerbtn .el-dialog__close) {
   color: #6b6560;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.person-dialog :deep(.el-dialog__headerbtn:hover .el-dialog__close) {
+.close-btn:hover {
+  background: #f5f3f1;
   color: #2d2a26;
 }
 
-.person-dialog :deep(.el-dialog__body) {
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
   padding: 1.5rem 2rem;
 }
 
-.person-dialog :deep(.el-dialog__footer) {
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
   padding: 1.25rem 2rem;
   border-top: 1px solid #e5e0dc;
 }
 
-.person-dialog :deep(.el-form-item__label) {
+/* Form Sections */
+.form-section {
+  margin-bottom: 2rem;
+}
+
+.form-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.section-icon {
+  color: #da7756;
+}
+
+.section-header h3 {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #2d2a26;
+  margin: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.form-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.form-group label {
   font-size: 0.8125rem;
   font-weight: 450;
   color: #6b6560;
 }
 
-.person-dialog :deep(.el-input__wrapper),
-.person-dialog :deep(.el-textarea__inner),
-.person-dialog :deep(.el-input-number .el-input__wrapper) {
-  border-radius: 8px;
-  background: #fdfcfb;
-  box-shadow: none;
+.form-group input,
+.form-group textarea {
+  padding: 0.625rem 0.875rem;
   border: 1px solid #e5e0dc;
+  border-radius: 8px;
+  font-size: 0.875rem;
   transition: all 0.2s ease;
+  background: #fdfcfb;
+  color: #2d2a26;
 }
 
-.person-dialog :deep(.el-input__wrapper:hover),
-.person-dialog :deep(.el-textarea__inner:hover),
-.person-dialog :deep(.el-input-number .el-input__wrapper:hover) {
+.form-group input:hover,
+.form-group textarea:hover {
   border-color: #d5d0cc;
 }
 
-.person-dialog :deep(.el-input__wrapper.is-focus),
-.person-dialog :deep(.el-textarea__inner:focus),
-.person-dialog :deep(.el-input-number.is-focus .el-input__wrapper) {
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
   border-color: #da7756;
   background: white;
   box-shadow: 0 0 0 2px rgba(218, 119, 86, 0.1);
 }
 
-.person-dialog :deep(.el-divider__text) {
-  font-size: 0.8125rem;
-  color: #9a9590;
-  background: white;
+.form-group textarea {
+  resize: vertical;
+  min-height: 60px;
+  font-family: inherit;
 }
 
-.person-dialog :deep(.el-divider) {
-  border-color: #e5e0dc;
-}
-
-.dialog-footer {
+.input-with-unit {
+  position: relative;
   display: flex;
-  justify-content: flex-end;
-  gap: 0.75rem;
+  align-items: center;
 }
 
-.dialog-footer .el-button {
-  border-radius: 8px;
-  font-weight: 450;
+.input-with-unit input {
+  width: 100%;
+  padding-right: 2.5rem;
+}
+
+.input-unit {
+  position: absolute;
+  right: 0.875rem;
+  font-size: 0.75rem;
+  color: #9a9590;
+  pointer-events: none;
+}
+
+/* Buttons */
+.button-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   padding: 0.625rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
 }
 
-.dialog-footer .el-button--default {
+.btn-secondary {
   background: #f5f3f1;
-  border-color: #e5e0dc;
   color: #2d2a26;
 }
 
-.dialog-footer .el-button--default:hover {
+.btn-secondary:hover {
   background: #ebe8e5;
-  border-color: #d5d0cc;
-  color: #2d2a26;
 }
 
-.dialog-footer .el-button--primary {
+.btn-primary {
   background: #da7756;
-  border-color: #da7756;
+  color: white;
 }
 
-.dialog-footer .el-button--primary:hover {
+.btn-primary:hover {
   background: #c4684a;
-  border-color: #c4684a;
+}
+
+.btn-large {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+/* Modal transitions */
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.modal-enter-active .modal-container,
+.modal-leave-active .modal-container {
+  transition: transform 0.2s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-from .modal-container,
+.modal-leave-to .modal-container {
+  transform: scale(0.96);
+}
+
+@media (max-width: 640px) {
+  .form-grid,
+  .form-grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-container {
+    max-height: 100vh;
+    border-radius: 0;
+  }
 }
 </style>
