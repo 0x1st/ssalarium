@@ -393,7 +393,7 @@ onMounted(() => {
 .title-icon {
   width: 32px;
   height: 32px;
-  color: #3b82f6;
+  color: #d97706;
 }
 
 .header-title h1 {
@@ -510,7 +510,7 @@ onMounted(() => {
 }
 
 .field-category {
-  color: #3b82f6;
+  color: #d97706;
 }
 
 .field-tag {
@@ -538,12 +538,12 @@ onMounted(() => {
 }
 
 .btn-edit {
-  background: #eff6ff;
-  color: #3b82f6;
+  background: #fef3c7;
+  color: #d97706;
 }
 
 .btn-edit:hover {
-  background: #dbeafe;
+  background: #fde68a;
 }
 
 .btn-delete {
@@ -574,12 +574,12 @@ onMounted(() => {
 }
 
 .btn-primary {
-  background: #3b82f6;
+  background: #d97706;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #2563eb;
+  background: #b45309;
 }
 
 .btn-secondary {
@@ -623,8 +623,8 @@ onMounted(() => {
 
 .form-control:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: #d97706;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
 }
 
 .form-control:disabled {

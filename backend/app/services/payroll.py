@@ -5,25 +5,12 @@ def compute_payroll(
     *,
     base_salary,
     performance_salary,
-    high_temp_allowance,
-    low_temp_allowance,
-    computer_allowance,
-    communication_allowance,
-    meal_allowance,
-    mid_autumn_benefit,
-    dragon_boat_benefit,
-    spring_festival_benefit,
-    other_income,
-    comprehensive_allowance,
     pension_insurance,
     medical_insurance,
     unemployment_insurance,
     critical_illness_insurance,
     enterprise_annuity,
     housing_fund,
-    other_deductions,
-    labor_union_fee,
-    performance_deduction,
     tax,
     custom_fields=None,  # List of dicts: [{field_type, is_non_cash, amount}, ...]
 ):
@@ -32,16 +19,6 @@ def compute_payroll(
 
     base_salary = D(base_salary)
     performance_salary = D(performance_salary)
-    high_temp_allowance = D(high_temp_allowance)
-    low_temp_allowance = D(low_temp_allowance)
-    computer_allowance = D(computer_allowance)
-    communication_allowance = D(communication_allowance)
-    meal_allowance = D(meal_allowance)
-    mid_autumn_benefit = D(mid_autumn_benefit)
-    dragon_boat_benefit = D(dragon_boat_benefit)
-    spring_festival_benefit = D(spring_festival_benefit)
-    other_income = D(other_income)
-    comprehensive_allowance = D(comprehensive_allowance)
 
     pension_insurance = D(pension_insurance)
     medical_insurance = D(medical_insurance)
@@ -49,9 +26,6 @@ def compute_payroll(
     critical_illness_insurance = D(critical_illness_insurance)
     enterprise_annuity = D(enterprise_annuity)
     housing_fund = D(housing_fund)
-    other_deductions = D(other_deductions)
-    labor_union_fee = D(labor_union_fee)
-    performance_deduction = D(performance_deduction)
     tax = D(tax)
 
     # Process custom fields
@@ -76,31 +50,16 @@ def compute_payroll(
                 custom_deductions += amount
 
     # Non-cash benefits (not included in actual take-home)
-    non_cash_benefits = (
-        meal_allowance
-        + mid_autumn_benefit
-        + dragon_boat_benefit
-        + spring_festival_benefit
-        + custom_non_cash
-    ).quantize(q, rounding=ROUND_HALF_UP)
+    non_cash_benefits = custom_non_cash.quantize(q, rounding=ROUND_HALF_UP)
 
-    # Total income includes everything
+    # Total income includes base + performance + custom income
     total_income = (
         base_salary
         + performance_salary
-        + high_temp_allowance
-        + low_temp_allowance
-        + computer_allowance
-        + communication_allowance
-        + comprehensive_allowance
-        + meal_allowance
-        + mid_autumn_benefit
-        + dragon_boat_benefit
-        + spring_festival_benefit
-        + other_income
         + custom_income
     ).quantize(q, rounding=ROUND_HALF_UP)
 
+    # Total deductions (五险一金 + custom deductions)
     total_deductions = (
         pension_insurance
         + medical_insurance
@@ -108,9 +67,6 @@ def compute_payroll(
         + critical_illness_insurance
         + enterprise_annuity
         + housing_fund
-        + other_deductions
-        + labor_union_fee
-        + performance_deduction
         + custom_deductions
     ).quantize(q, rounding=ROUND_HALF_UP)
 
@@ -118,18 +74,13 @@ def compute_payroll(
     net_income = (gross_income - total_deductions - tax).quantize(q, rounding=ROUND_HALF_UP)
 
     # Actual take-home = cash income - deductions - tax
-    # Excludes non-cash benefits (meal, festival benefits)
+    # Excludes non-cash benefits
     actual_take_home = (
         base_salary
         + performance_salary
-        + high_temp_allowance
-        + low_temp_allowance
-        + computer_allowance
-        + communication_allowance
-        + comprehensive_allowance
-        + other_income
         + custom_cash_income
         - total_deductions
+        - tax
     ).quantize(q, rounding=ROUND_HALF_UP)
 
     return {

@@ -328,7 +328,7 @@ onMounted(load)
 
 .add-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(64, 158, 255, 0.3);
+  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
 }
 
 .button-icon {
@@ -383,14 +383,14 @@ onMounted(load)
 }
 
 .person-card {
-  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
   border-radius: 16px;
   padding: 24px;
   display: flex;
   align-items: center;
   gap: 20px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(102, 126, 234, 0.08);
+  border: 1px solid rgba(217, 119, 6, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
   position: relative;
   overflow: hidden;
@@ -403,16 +403,16 @@ onMounted(load)
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .person-card:hover {
-  background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.15);
-  border-color: rgba(102, 126, 234, 0.2);
+  box-shadow: 0 12px 40px rgba(217, 119, 6, 0.15);
+  border-color: rgba(217, 119, 6, 0.2);
 }
 
 .person-card:hover::before {
@@ -423,7 +423,7 @@ onMounted(load)
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -461,7 +461,7 @@ onMounted(load)
 }
 
 .person-card:hover .person-name {
-  color: #667eea;
+  color: #d97706;
 }
 
 .person-note {
@@ -527,14 +527,14 @@ onMounted(load)
 }
 
 .person-actions .el-button--primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
   color: white;
 }
 
 .person-actions .el-button--primary:hover {
-  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
 }
 
 .person-actions .el-button--danger {
