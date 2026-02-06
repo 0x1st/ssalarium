@@ -58,8 +58,8 @@ function formatCurrency(amount) {
 
 .stat-card {
   background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 16px;
+  border: 1px solid #e5e0dc;
+  border-radius: 12px;
   padding: 1.5rem;
   display: flex;
   align-items: center;
@@ -68,14 +68,14 @@ function formatCurrency(amount) {
 }
 
 .stat-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
+  border-color: #d5d0cc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .stat-icon {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,17 +83,17 @@ function formatCurrency(amount) {
 }
 
 .stat-icon-primary {
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  background: #da7756;
   color: white;
 }
 
 .stat-icon-success {
-  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  background: #5a8a6e;
   color: white;
 }
 
 .stat-icon-warning {
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  background: #c9a227;
   color: white;
 }
 
@@ -105,14 +105,15 @@ function formatCurrency(amount) {
 
 .stat-label {
   font-size: 0.875rem;
-  color: #6b7280;
-  font-weight: 500;
+  color: #6b6560;
+  font-weight: 450;
 }
 
 .stat-value {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #111827;
-  letter-spacing: -0.02em;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.375rem;
+  font-weight: 500;
+  color: #2d2a26;
+  letter-spacing: -0.01em;
 }
 </style>

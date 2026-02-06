@@ -151,20 +151,20 @@ function closeMobileMenu() {
 .app-layout {
   display: flex;
   min-height: 100vh;
-  background-color: #f8fafc;
+  background-color: #fdfcfb;
 }
 
 .login-layout {
   min-height: 100vh;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%);
+  background: #fdfcfb;
 }
 
 /* 桌面端侧边栏 */
 .desktop-sidebar {
   width: 280px;
   background: #ffffff;
-  border-right: 1px solid #e2e8f0;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  border-right: 1px solid #e5e0dc;
+  box-shadow: none;
   transition: width 0.3s ease;
   position: fixed;
   left: 0;
@@ -180,8 +180,8 @@ function closeMobileMenu() {
 }
 
 .sidebar-header {
-  padding: 1.5rem 1rem;
-  border-bottom: 1px solid #e2e8f0;
+  padding: 1.75rem 1.25rem;
+  border-bottom: 1px solid #e5e0dc;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -191,7 +191,7 @@ function closeMobileMenu() {
 
 .desktop-sidebar.collapsed .sidebar-header {
   justify-content: center;
-  padding: 1.5rem 0.5rem;
+  padding: 1.75rem 0.5rem;
 }
 
 .desktop-sidebar.collapsed .logo {
@@ -205,24 +205,26 @@ function closeMobileMenu() {
 }
 
 .logo-icon {
-  width: 32px;
-  height: 32px;
-  color: #d97706;
+  width: 28px;
+  height: 28px;
+  color: #da7756;
 }
 
 .logo-text {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1e293b;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.375rem;
+  font-weight: 500;
+  color: #2d2a26;
+  letter-spacing: -0.01em;
 }
 
 .collapse-btn {
   background: none;
   border: none;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   cursor: pointer;
-  color: #64748b;
+  color: #6b6560;
   transition: all 0.2s;
   flex-shrink: 0;
   position: relative;
@@ -230,47 +232,47 @@ function closeMobileMenu() {
 }
 
 .collapse-btn:hover {
-  background-color: #fef3c7;
-  color: #d97706;
+  background-color: #f5e6e0;
+  color: #da7756;
 }
 
 .collapse-btn svg {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   display: block;
 }
 
 .desktop-sidebar.collapsed .collapse-btn svg {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
 }
 
 .sidebar-nav {
   flex: 1;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.875rem 1rem;
+  padding: 0.875rem 1.25rem;
   margin: 0.25rem 1rem;
-  border-radius: 0.5rem;
-  color: #64748b;
+  border-radius: 8px;
+  color: #6b6560;
   text-decoration: none;
   transition: all 0.2s;
-  font-weight: 500;
+  font-weight: 450;
 }
 
 .nav-item:hover {
-  background-color: #fef3c7;
-  color: #d97706;
+  background-color: #f5e6e0;
+  color: #da7756;
 }
 
 .nav-item.router-link-active {
-  background-color: #fef3c7;
-  color: #d97706;
+  background-color: #f5e6e0;
+  color: #da7756;
 }
 
 .nav-icon {
@@ -280,39 +282,36 @@ function closeMobileMenu() {
 }
 
 .sidebar-footer {
-  padding: 1rem;
-  border-top: 1px solid #e2e8f0;
+  padding: 1.25rem;
+  border-top: 1px solid #e5e0dc;
 }
 
 .user-profile {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem;
+  padding: 0.875rem;
   margin-bottom: 0.5rem;
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  border-radius: 0.75rem;
-  border: 1px solid #e2e8f0;
-  transition: all 0.3s ease;
+  background: #faf5f3;
+  border-radius: 10px;
+  border: 1px solid #e5e0dc;
+  transition: all 0.2s ease;
 }
 
 .user-profile:hover {
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  border-color: #d97706;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.15);
+  background: #f5e6e0;
+  border-color: #da7756;
 }
 
 .user-avatar {
   width: 36px;
   height: 36px;
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  background: #da7756;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
 }
 
 .avatar-icon {
@@ -327,8 +326,8 @@ function closeMobileMenu() {
 }
 
 .user-name {
-  font-weight: 600;
-  color: #1e293b;
+  font-weight: 500;
+  color: #2d2a26;
   font-size: 14px;
   margin-bottom: 2px;
   white-space: nowrap;
@@ -342,7 +341,7 @@ function closeMobileMenu() {
   gap: 4px;
   background: none;
   border: none;
-  color: #64748b;
+  color: #6b6560;
   font-size: 12px;
   cursor: pointer;
   padding: 0;
@@ -350,7 +349,7 @@ function closeMobileMenu() {
 }
 
 .logout-link:hover {
-  color: #ef4444;
+  color: #c45c5c;
 }
 
 .logout-link .logout-icon {
@@ -364,13 +363,13 @@ function closeMobileMenu() {
   padding: 8px;
   border-radius: 50%;
   cursor: pointer;
-  color: #64748b;
+  color: #6b6560;
   transition: all 0.2s ease;
 }
 
 .logout-btn-collapsed:hover {
-  background-color: #fee2e2;
-  color: #ef4444;
+  background-color: #f5e6e0;
+  color: #c45c5c;
 }
 
 .logout-btn-collapsed .logout-icon {
@@ -385,18 +384,18 @@ function closeMobileMenu() {
   padding: 0.75rem;
   margin-bottom: 0.5rem;
   background: none;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.5rem;
-  color: #64748b;
+  border: 1px solid #e5e0dc;
+  border-radius: 8px;
+  color: #6b6560;
   cursor: pointer;
   transition: all 0.2s;
-  font-weight: 500;
+  font-weight: 450;
 }
 
 .language-btn:hover {
-  background-color: #f1f5f9;
-  border-color: #10b981;
-  color: #10b981;
+  background-color: #f5f3f1;
+  border-color: #5a8a6e;
+  color: #5a8a6e;
 }
 
 .language-icon {
@@ -411,18 +410,18 @@ function closeMobileMenu() {
   gap: 0.75rem;
   padding: 0.75rem;
   background: none;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.5rem;
-  color: #64748b;
+  border: 1px solid #e5e0dc;
+  border-radius: 8px;
+  color: #6b6560;
   cursor: pointer;
   transition: all 0.2s;
-  font-weight: 500;
+  font-weight: 450;
 }
 
 .logout-btn:hover, .login-btn:hover {
-  background-color: #fef3c7;
-  border-color: #d97706;
-  color: #d97706;
+  background-color: #f5e6e0;
+  border-color: #da7756;
+  color: #da7756;
 }
 
 .logout-icon, .login-icon {
@@ -434,8 +433,8 @@ function closeMobileMenu() {
 .mobile-header {
   display: none;
   background: #ffffff;
-  border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #e5e0dc;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   position: fixed;
   top: 0;
   left: 0;
@@ -455,7 +454,7 @@ function closeMobileMenu() {
   border: none;
   padding: 0.5rem;
   cursor: pointer;
-  color: #64748b;
+  color: #6b6560;
 }
 
 .mobile-logo {
@@ -473,37 +472,37 @@ function closeMobileMenu() {
 .mobile-user .user-icon {
   width: 24px;
   height: 24px;
-  color: #64748b;
+  color: #6b6560;
 }
 
 .mobile-language-btn {
   background: none;
   border: none;
-  color: #64748b;
+  color: #6b6560;
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   transition: all 0.2s;
 }
 
 .mobile-language-btn:hover {
-  background-color: #f1f5f9;
-  color: #10b981;
+  background-color: #f5f3f1;
+  color: #5a8a6e;
 }
 
 .mobile-login-btn {
   background: none;
   border: none;
-  color: #64748b;
+  color: #6b6560;
   cursor: pointer;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 8px;
   transition: all 0.2s;
 }
 
 .mobile-login-btn:hover {
-  background-color: #fef3c7;
-  color: #d97706;
+  background-color: #f5e6e0;
+  color: #da7756;
 }
 
 .mobile-sidebar {
@@ -514,7 +513,7 @@ function closeMobileMenu() {
   width: 280px;
   height: 100vh;
   background: #ffffff;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
   transition: left 0.3s ease;
   z-index: 1002;
   padding-top: 80px;
@@ -531,7 +530,7 @@ function closeMobileMenu() {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   z-index: 1001;
 }
 
@@ -559,17 +558,17 @@ function closeMobileMenu() {
 /* Page transition animations */
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.22s ease, transform 0.22s ease;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .page-enter-from {
   opacity: 0;
-  transform: translateY(-8px);
+  transform: translateY(-6px);
 }
 
 .page-leave-to {
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(6px);
 }
 
 .page-enter-to,
@@ -583,24 +582,24 @@ function closeMobileMenu() {
   .desktop-sidebar {
     display: none;
   }
-  
+
   .mobile-header {
     display: block;
   }
-  
+
   .mobile-sidebar {
     display: block;
   }
-  
+
   .mobile-overlay {
     display: block;
   }
-  
+
   .main-content {
     margin-left: 0;
     padding-top: 80px;
   }
-  
+
   .content-wrapper {
     padding: 0;
   }

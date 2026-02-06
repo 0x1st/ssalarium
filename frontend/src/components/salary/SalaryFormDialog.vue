@@ -271,8 +271,8 @@ function close() {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -282,13 +282,13 @@ function close() {
 
 .modal-container {
   background: white;
-  border-radius: 20px;
+  border-radius: 16px;
   width: 100%;
   max-width: 640px;
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 }
 
 .modal-header {
@@ -296,13 +296,14 @@ function close() {
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid #e5e0dc;
 }
 
 .modal-header h2 {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.25rem;
-  font-weight: 600;
-  color: #111827;
+  font-weight: 500;
+  color: #2d2a26;
   margin: 0;
 }
 
@@ -311,14 +312,14 @@ function close() {
   background: transparent;
   border: none;
   border-radius: 8px;
-  color: #6b7280;
+  color: #6b6560;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .close-btn:hover {
-  background: #f3f4f6;
-  color: #374151;
+  background: #f5f3f1;
+  color: #2d2a26;
 }
 
 .modal-body {
@@ -343,13 +344,13 @@ function close() {
 }
 
 .section-icon {
-  color: #d97706;
+  color: #da7756;
 }
 
 .section-header h3 {
   font-size: 0.9375rem;
-  font-weight: 600;
-  color: #374151;
+  font-weight: 500;
+  color: #2d2a26;
   margin: 0;
 }
 
@@ -371,31 +372,31 @@ function close() {
 
 .form-group label {
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: #6b7280;
+  font-weight: 450;
+  color: #6b6560;
 }
 
 .form-group input,
 .form-group textarea {
   padding: 0.625rem 0.875rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
+  border: 1px solid #e5e0dc;
+  border-radius: 8px;
   font-size: 0.875rem;
   transition: all 0.2s ease;
-  background: #fafafa;
+  background: #fdfcfb;
 }
 
 .form-group input:hover,
 .form-group textarea:hover {
-  border-color: #d1d5db;
+  border-color: #d5d0cc;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #d97706;
+  border-color: #da7756;
   background: white;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+  box-shadow: 0 0 0 2px rgba(218, 119, 86, 0.1);
 }
 
 .form-group textarea {
@@ -406,7 +407,7 @@ function close() {
 .custom-fields {
   margin-top: 1.25rem;
   padding-top: 1.25rem;
-  border-top: 1px dashed #e5e7eb;
+  border-top: 1px dashed #e5e0dc;
 }
 
 .custom-fields-header {
@@ -415,7 +416,7 @@ function close() {
   align-items: center;
   margin-bottom: 0.75rem;
   font-size: 0.8125rem;
-  color: #9ca3af;
+  color: #9a9590;
 }
 
 .link-btn {
@@ -424,7 +425,7 @@ function close() {
   gap: 0.25rem;
   background: none;
   border: none;
-  color: #d97706;
+  color: #da7756;
   font-size: 0.75rem;
   cursor: pointer;
   padding: 0;
@@ -439,37 +440,37 @@ function close() {
   justify-content: flex-end;
   gap: 0.75rem;
   padding: 1.25rem 2rem;
-  border-top: 1px solid #f3f4f6;
+  border-top: 1px solid #e5e0dc;
 }
 
 .btn {
   padding: 0.625rem 1.25rem;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 450;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .btn-secondary {
-  background: #f3f4f6;
-  border: 1px solid #e5e7eb;
-  color: #374151;
+  background: #f5f3f1;
+  border: 1px solid #e5e0dc;
+  color: #2d2a26;
 }
 
 .btn-secondary:hover {
-  background: #e5e7eb;
+  background: #ebe8e5;
 }
 
 .btn-primary {
-  background: #d97706;
-  border: 1px solid #d97706;
+  background: #da7756;
+  border: 1px solid #da7756;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #b45309;
-  border-color: #b45309;
+  background: #c4684a;
+  border-color: #c4684a;
 }
 
 /* Transitions */
@@ -490,7 +491,7 @@ function close() {
 
 .modal-enter-from .modal-container,
 .modal-leave-to .modal-container {
-  transform: scale(0.95);
+  transform: scale(0.96);
 }
 
 @media (max-width: 640px) {

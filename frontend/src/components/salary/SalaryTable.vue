@@ -102,8 +102,8 @@ function computeCustomIncome(salary) {
 <style scoped>
 .table-container {
   background: white;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 16px;
+  border: 1px solid #e5e0dc;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -111,14 +111,14 @@ function computeCustomIncome(salary) {
 .empty-state {
   padding: 4rem 2rem;
   text-align: center;
-  color: #6b7280;
+  color: #6b6560;
 }
 
 .loading-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid #f3f4f6;
-  border-top-color: #d97706;
+  border: 3px solid #f5f3f1;
+  border-top-color: #da7756;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin: 0 auto 1rem;
@@ -129,14 +129,15 @@ function computeCustomIncome(salary) {
 }
 
 .empty-icon {
-  color: #d1d5db;
+  color: #d5d0cc;
   margin-bottom: 1rem;
 }
 
 .empty-state h3 {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.125rem;
-  font-weight: 600;
-  color: #374151;
+  font-weight: 500;
+  color: #2d2a26;
   margin-bottom: 0.5rem;
 }
 
@@ -157,20 +158,20 @@ function computeCustomIncome(salary) {
   padding: 1rem 1.25rem;
   text-align: left;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #6b7280;
-  background: #fafafa;
-  border-bottom: 1px solid #e5e7eb;
+  color: #6b6560;
+  background: #faf5f3;
+  border-bottom: 1px solid #e5e0dc;
   white-space: nowrap;
 }
 
 .data-table td {
   padding: 1rem 1.25rem;
   font-size: 0.875rem;
-  color: #374151;
-  border-bottom: 1px solid #f3f4f6;
+  color: #2d2a26;
+  border-bottom: 1px solid #f5f3f1;
   white-space: nowrap;
 }
 
@@ -179,7 +180,7 @@ function computeCustomIncome(salary) {
 }
 
 .data-table tbody tr:hover {
-  background: #fafafa;
+  background: #faf5f3;
 }
 
 .text-right {
@@ -191,23 +192,23 @@ function computeCustomIncome(salary) {
 }
 
 .text-muted {
-  color: #9ca3af;
+  color: #9a9590;
 }
 
 .text-danger {
-  color: #dc2626;
+  color: #c45c5c;
 }
 
 .text-success {
-  color: #059669;
+  color: #5a8a6e;
 }
 
 .font-semibold {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .highlight {
-  background: rgba(217, 119, 6, 0.04);
+  background: rgba(218, 119, 86, 0.04);
 }
 
 .date-cell {
@@ -217,7 +218,7 @@ function computeCustomIncome(salary) {
 }
 
 .date-icon {
-  color: #9ca3af;
+  color: #9a9590;
 }
 
 .action-buttons {
@@ -238,20 +239,20 @@ function computeCustomIncome(salary) {
 }
 
 .action-btn-edit {
-  background: #f0f9ff;
-  color: #0284c7;
+  background: #f5e6e0;
+  color: #da7756;
 }
 
 .action-btn-edit:hover {
-  background: #e0f2fe;
+  background: #f0dcd4;
 }
 
 .action-btn-delete {
-  background: #fef2f2;
-  color: #dc2626;
+  background: #f5e6e0;
+  color: #c45c5c;
 }
 
 .action-btn-delete:hover {
-  background: #fee2e2;
+  background: #f0dcd4;
 }
 </style>

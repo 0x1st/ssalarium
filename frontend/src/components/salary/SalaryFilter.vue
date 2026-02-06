@@ -64,8 +64,8 @@ import { computed } from 'vue'
   align-items: center;
   gap: 1.5rem;
   padding: 1rem 1.5rem;
-  background: #fafafa;
-  border-radius: 12px;
+  background: #faf5f3;
+  border-radius: 10px;
   margin-bottom: 1.5rem;
   flex-wrap: wrap;
 }
@@ -78,20 +78,20 @@ import { computed } from 'vue'
 
 .filter-label {
   font-size: 0.875rem;
-  font-weight: 500;
-  color: #6b7280;
+  font-weight: 450;
+  color: #6b6560;
 }
 
 .filter-select {
   padding: 0.5rem 2rem 0.5rem 0.75rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5e0dc;
   border-radius: 8px;
   font-size: 0.875rem;
   background: white;
   cursor: pointer;
   transition: all 0.2s ease;
   appearance: none;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b6560' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
   background-position: right 0.5rem center;
   background-repeat: no-repeat;
   background-size: 1.25rem;
@@ -99,13 +99,13 @@ import { computed } from 'vue'
 }
 
 .filter-select:hover {
-  border-color: #d1d5db;
+  border-color: #d5d0cc;
 }
 
 .filter-select:focus {
   outline: none;
-  border-color: #d97706;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+  border-color: #da7756;
+  box-shadow: 0 0 0 2px rgba(218, 119, 86, 0.1);
 }
 
 .btn-clear {
@@ -114,16 +114,16 @@ import { computed } from 'vue'
   gap: 0.375rem;
   padding: 0.5rem 0.75rem;
   background: transparent;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5e0dc;
   border-radius: 8px;
   font-size: 0.8125rem;
-  color: #6b7280;
+  color: #6b6560;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .btn-clear:hover {
-  background: #f3f4f6;
-  color: #374151;
+  background: #f5f3f1;
+  color: #2d2a26;
 }
 </style>

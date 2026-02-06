@@ -39,51 +39,41 @@ defineProps({
 
 .stat-card {
   background: white;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e0dc;
   display: flex;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
 }
 
-.stat-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient);
-}
-
 .stat-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #d5d0cc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .gradient-blue {
-  --gradient: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  border-left: 3px solid #da7756;
 }
 
 .gradient-green {
-  --gradient: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  border-left: 3px solid #5a8a6e;
 }
 
 .gradient-orange {
-  --gradient: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+  border-left: 3px solid #da7756;
 }
 
 .gradient-purple {
-  --gradient: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+  border-left: 3px solid #c4684a;
 }
 
 .stat-icon {
-  font-size: 32px;
+  font-size: 28px;
   margin-right: 16px;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .stat-content {
@@ -91,17 +81,18 @@ defineProps({
 }
 
 .stat-value {
-  font-size: 24px;
-  font-weight: 700;
-  color: #2c3e50;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #2d2a26;
   margin-bottom: 4px;
   line-height: 1.2;
 }
 
 .stat-label {
   font-size: 14px;
-  color: #7f8c8d;
-  font-weight: 500;
+  color: #6b6560;
+  font-weight: 450;
   line-height: 1.4;
 }
 
@@ -110,7 +101,7 @@ defineProps({
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
   }
-  
+
   .stat-card {
     padding: 20px;
   }
@@ -120,14 +111,14 @@ defineProps({
   .stat-card {
     padding: 16px;
   }
-  
+
   .stat-icon {
-    font-size: 28px;
+    font-size: 24px;
     margin-right: 12px;
   }
-  
+
   .stat-value {
-    font-size: 20px;
+    font-size: 18px;
   }
 }
 </style>

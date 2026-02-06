@@ -322,13 +322,12 @@ onMounted(load)
 .add-button {
   border-radius: 8px;
   padding: 12px 20px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+  font-weight: 500;
+  transition: all 0.2s ease;
 }
 
 .add-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
+  box-shadow: 0 2px 8px rgba(218, 119, 86, 0.2);
 }
 
 .button-icon {
@@ -338,16 +337,17 @@ onMounted(load)
 }
 
 .persons-list-card {
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e0dc;
+  box-shadow: none;
   margin-bottom: 24px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .persons-list-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #d5d0cc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 
@@ -364,9 +364,10 @@ onMounted(load)
 }
 
 .card-title {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 18px;
-  font-weight: 600;
-  color: #2c3e50;
+  font-weight: 500;
+  color: #2d2a26;
 }
 
 /* 统一刷新按钮样式 */
@@ -383,15 +384,14 @@ onMounted(load)
 }
 
 .person-card {
-  background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%);
-  border-radius: 16px;
+  background: #ffffff;
+  border-radius: 12px;
   padding: 24px;
   display: flex;
   align-items: center;
   gap: 20px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid rgba(217, 119, 6, 0.08);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+  border: 1px solid #e5e0dc;
   position: relative;
   overflow: hidden;
 }
@@ -401,18 +401,16 @@ onMounted(load)
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  bottom: 0;
+  width: 3px;
+  background: #da7756;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .person-card:hover {
-  background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(217, 119, 6, 0.15);
-  border-color: rgba(217, 119, 6, 0.2);
+  border-color: #d5d0cc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .person-card:hover::before {
@@ -420,10 +418,10 @@ onMounted(load)
 }
 
 .person-avatar {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  background: #da7756;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -439,8 +437,8 @@ onMounted(load)
 }
 
 .person-avatar .avatar-icon {
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
 }
 
 .person-info {
@@ -449,24 +447,25 @@ onMounted(load)
 }
 
 .person-name {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1a202c;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 17px;
+  font-weight: 500;
+  color: #2d2a26;
   margin: 0 0 6px 0;
   line-height: 1.3;
-  letter-spacing: -0.025em;
-  transition: color 0.3s ease;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
 .person-card:hover .person-name {
-  color: #d97706;
+  color: #da7756;
 }
 
 .person-note {
   font-size: 14px;
-  color: #718096;
+  color: #6b6560;
   margin: 0;
   font-weight: 400;
   line-height: 1.4;
@@ -485,8 +484,8 @@ onMounted(load)
   display: flex;
   flex-direction: column;
   gap: 8px;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
 }
 
 .person-card:hover .person-actions {
@@ -495,13 +494,13 @@ onMounted(load)
 
 .person-actions .el-button {
   border-radius: 8px !important;
-  font-weight: 500 !important;
+  font-weight: 450 !important;
   font-size: 13px !important;
   padding: 0 !important;
   margin: 0 !important;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: all 0.2s ease !important;
   border: none !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: none !important;
   width: 110px !important;
   height: 36px !important;
   min-width: 110px !important;
@@ -523,29 +522,27 @@ onMounted(load)
   width: 100% !important;
   height: 100% !important;
   font-size: 13px !important;
-  font-weight: 500 !important;
+  font-weight: 450 !important;
 }
 
 .person-actions .el-button--primary {
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  background: #da7756;
   color: white;
 }
 
 .person-actions .el-button--primary:hover {
-  background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+  background: #c4684a;
+  box-shadow: 0 2px 6px rgba(218, 119, 86, 0.25) !important;
 }
 
 .person-actions .el-button--danger {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  background: #c45c5c;
   color: white;
 }
 
 .person-actions .el-button--danger:hover {
-  background: linear-gradient(135deg, #ff5252 0%, #e53e3e 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+  background: #b04f4f;
+  box-shadow: 0 2px 6px rgba(196, 92, 92, 0.25) !important;
 }
 
 .person-actions .el-button .el-icon {
@@ -553,16 +550,17 @@ onMounted(load)
 }
 
 .empty-state-card {
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e0dc;
+  box-shadow: none;
   margin-bottom: 24px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .empty-state-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #d5d0cc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .empty-container {
@@ -571,19 +569,21 @@ onMounted(load)
 }
 
 .empty-icon {
-  font-size: 4rem;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
+  opacity: 0.8;
 }
 
 .empty-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #111827;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.375rem;
+  font-weight: 500;
+  color: #2d2a26;
   margin-bottom: 0.5rem;
 }
 
 .empty-description {
-  color: #6b7280;
+  color: #6b6560;
   margin-bottom: 1.5rem;
 }
 
@@ -593,7 +593,7 @@ onMounted(load)
     grid-template-columns: 1fr;
     gap: 16px;
   }
-  
+
   .person-card {
     padding: 16px;
   }
@@ -605,9 +605,132 @@ onMounted(load)
     text-align: center;
     gap: 12px;
   }
-  
+
   .person-info {
     text-align: center;
   }
+}
+
+/* Dialog styles - Claude/Anthropic style */
+.person-dialog :deep(.el-dialog) {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.person-dialog :deep(.el-dialog__header) {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e5e0dc;
+  margin-right: 0;
+}
+
+.person-dialog :deep(.el-dialog__title) {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #2d2a26;
+}
+
+.person-dialog :deep(.el-dialog__headerbtn) {
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.person-dialog :deep(.el-dialog__headerbtn:hover) {
+  background: #f5f3f1;
+}
+
+.person-dialog :deep(.el-dialog__headerbtn .el-dialog__close) {
+  color: #6b6560;
+}
+
+.person-dialog :deep(.el-dialog__headerbtn:hover .el-dialog__close) {
+  color: #2d2a26;
+}
+
+.person-dialog :deep(.el-dialog__body) {
+  padding: 1.5rem 2rem;
+}
+
+.person-dialog :deep(.el-dialog__footer) {
+  padding: 1.25rem 2rem;
+  border-top: 1px solid #e5e0dc;
+}
+
+.person-dialog :deep(.el-form-item__label) {
+  font-size: 0.8125rem;
+  font-weight: 450;
+  color: #6b6560;
+}
+
+.person-dialog :deep(.el-input__wrapper),
+.person-dialog :deep(.el-textarea__inner),
+.person-dialog :deep(.el-input-number .el-input__wrapper) {
+  border-radius: 8px;
+  background: #fdfcfb;
+  box-shadow: none;
+  border: 1px solid #e5e0dc;
+  transition: all 0.2s ease;
+}
+
+.person-dialog :deep(.el-input__wrapper:hover),
+.person-dialog :deep(.el-textarea__inner:hover),
+.person-dialog :deep(.el-input-number .el-input__wrapper:hover) {
+  border-color: #d5d0cc;
+}
+
+.person-dialog :deep(.el-input__wrapper.is-focus),
+.person-dialog :deep(.el-textarea__inner:focus),
+.person-dialog :deep(.el-input-number.is-focus .el-input__wrapper) {
+  border-color: #da7756;
+  background: white;
+  box-shadow: 0 0 0 2px rgba(218, 119, 86, 0.1);
+}
+
+.person-dialog :deep(.el-divider__text) {
+  font-size: 0.8125rem;
+  color: #9a9590;
+  background: white;
+}
+
+.person-dialog :deep(.el-divider) {
+  border-color: #e5e0dc;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.dialog-footer .el-button {
+  border-radius: 8px;
+  font-weight: 450;
+  padding: 0.625rem 1.25rem;
+}
+
+.dialog-footer .el-button--default {
+  background: #f5f3f1;
+  border-color: #e5e0dc;
+  color: #2d2a26;
+}
+
+.dialog-footer .el-button--default:hover {
+  background: #ebe8e5;
+  border-color: #d5d0cc;
+  color: #2d2a26;
+}
+
+.dialog-footer .el-button--primary {
+  background: #da7756;
+  border-color: #da7756;
+}
+
+.dialog-footer .el-button--primary:hover {
+  background: #c4684a;
+  border-color: #c4684a;
 }
 </style>

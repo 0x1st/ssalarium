@@ -366,17 +366,17 @@ onMounted(() => {
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   background: transparent;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5e0dc;
   border-radius: 8px;
-  color: #6b7280;
+  color: #6b6560;
   font-size: 0.875rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .back-btn:hover {
-  background: #f9fafb;
-  color: #374151;
+  background: #faf5f3;
+  color: #2d2a26;
 }
 
 .back-icon {
@@ -393,18 +393,19 @@ onMounted(() => {
 .title-icon {
   width: 32px;
   height: 32px;
-  color: #d97706;
+  color: #da7756;
 }
 
 .header-title h1 {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 2rem;
-  font-weight: 700;
-  color: #111827;
+  font-weight: 500;
+  color: #2d2a26;
   margin: 0;
 }
 
 .header-subtitle {
-  color: #6b7280;
+  color: #6b6560;
   font-size: 1rem;
   margin: 0.25rem 0 0 0;
 }
@@ -427,8 +428,8 @@ onMounted(() => {
   align-items: center;
   gap: 0.75rem;
   padding: 1.25rem 1.5rem;
-  background: #f9fafb;
-  border-bottom: 1px solid #e5e7eb;
+  background: #faf5f3;
+  border-bottom: 1px solid #e5e0dc;
 }
 
 .section-icon {
@@ -437,25 +438,26 @@ onMounted(() => {
 }
 
 .section-icon.income {
-  color: #10b981;
+  color: #5a8a6e;
 }
 
 .section-icon.deduction {
-  color: #ef4444;
+  color: #c45c5c;
 }
 
 .section-header h2 {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.125rem;
-  font-weight: 600;
-  color: #111827;
+  font-weight: 500;
+  color: #2d2a26;
   margin: 0;
   flex: 1;
 }
 
 .field-count {
   font-size: 0.875rem;
-  color: #6b7280;
-  background: #e5e7eb;
+  color: #6b6560;
+  background: #f5f3f1;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
 }
@@ -467,7 +469,7 @@ onMounted(() => {
 .empty-state {
   text-align: center;
   padding: 2rem;
-  color: #9ca3af;
+  color: #9a9590;
 }
 
 .field-card {
@@ -475,7 +477,7 @@ onMounted(() => {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  background: #f9fafb;
+  background: #faf5f3;
   border-radius: 8px;
   margin-bottom: 0.75rem;
 }
@@ -489,8 +491,8 @@ onMounted(() => {
 }
 
 .field-name {
-  font-weight: 600;
-  color: #111827;
+  font-weight: 500;
+  color: #2d2a26;
   margin-bottom: 0.25rem;
 }
 
@@ -502,15 +504,15 @@ onMounted(() => {
 }
 
 .field-key {
-  color: #6b7280;
+  color: #6b6560;
   font-family: monospace;
-  background: #e5e7eb;
+  background: #f5f3f1;
   padding: 0.125rem 0.5rem;
   border-radius: 4px;
 }
 
 .field-category {
-  color: #d97706;
+  color: #da7756;
 }
 
 .field-tag {
@@ -538,12 +540,12 @@ onMounted(() => {
 }
 
 .btn-edit {
-  background: #fef3c7;
-  color: #d97706;
+  background: #f5e6e0;
+  color: #da7756;
 }
 
 .btn-edit:hover {
-  background: #fde68a;
+  background: #f0dcd4;
 }
 
 .btn-delete {
@@ -574,21 +576,21 @@ onMounted(() => {
 }
 
 .btn-primary {
-  background: #d97706;
+  background: #da7756;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #b45309;
+  background: #c4684a;
 }
 
 .btn-secondary {
-  background: #f3f4f6;
-  color: #374151;
+  background: #f5f3f1;
+  color: #2d2a26;
 }
 
 .btn-secondary:hover {
-  background: #e5e7eb;
+  background: #ebe8e5;
 }
 
 .button-icon {
@@ -607,34 +609,35 @@ onMounted(() => {
 .form-label {
   display: block;
   font-size: 0.875rem;
-  font-weight: 500;
-  color: #374151;
+  font-weight: 450;
+  color: #2d2a26;
   margin-bottom: 0.5rem;
 }
 
 .form-control {
   width: 100%;
   padding: 0.625rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid #e5e0dc;
   border-radius: 6px;
   font-size: 0.875rem;
   transition: border-color 0.2s ease;
+  background: #fdfcfb;
 }
 
 .form-control:focus {
   outline: none;
-  border-color: #d97706;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+  border-color: #da7756;
+  box-shadow: 0 0 0 3px rgba(218, 119, 86, 0.1);
 }
 
 .form-control:disabled {
-  background: #f3f4f6;
+  background: #f5f3f1;
   cursor: not-allowed;
 }
 
 .form-hint {
   font-size: 0.75rem;
-  color: #6b7280;
+  color: #9a9590;
   margin-top: 0.25rem;
 }
 
@@ -655,9 +658,9 @@ onMounted(() => {
 .dialog-footer {
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
+  gap: 0.75rem;
   padding-top: 1rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #e5e0dc;
 }
 
 @media (max-width: 768px) {
@@ -668,5 +671,54 @@ onMounted(() => {
   .fields-grid {
     grid-template-columns: 1fr;
   }
+}
+
+/* Dialog styles - Claude/Anthropic style */
+:deep(.el-dialog) {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+:deep(.el-dialog__header) {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid #e5e0dc;
+  margin-right: 0;
+}
+
+:deep(.el-dialog__title) {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #2d2a26;
+}
+
+:deep(.el-dialog__headerbtn) {
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+:deep(.el-dialog__headerbtn:hover) {
+  background: #f5f3f1;
+}
+
+:deep(.el-dialog__headerbtn .el-dialog__close) {
+  color: #6b6560;
+}
+
+:deep(.el-dialog__headerbtn:hover .el-dialog__close) {
+  color: #2d2a26;
+}
+
+:deep(.el-dialog__body) {
+  padding: 1.5rem 2rem;
+}
+
+:deep(.el-dialog__footer) {
+  padding: 1.25rem 2rem;
+  border-top: 1px solid #e5e0dc;
 }
 </style>

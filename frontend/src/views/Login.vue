@@ -173,7 +173,7 @@ async function onSubmit() {
 <style scoped>
 .login-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%);
+  background: #fdfcfb;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,9 +187,10 @@ async function onSubmit() {
 
 .login-card {
   background: white;
-  border-radius: 24px;
+  border-radius: 16px;
   padding: 2.5rem;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e0dc;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 .logo-section {
@@ -198,29 +199,29 @@ async function onSubmit() {
 }
 
 .logo {
-  width: 64px;
-  height: 64px;
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
-  border-radius: 16px;
+  width: 56px;
+  height: 56px;
+  background: #da7756;
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1rem;
   color: white;
-  box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.4);
 }
 
 .brand {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #111827;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 1.625rem;
+  font-weight: 500;
+  color: #2d2a26;
   margin: 0 0 0.25rem 0;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .tagline {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #6b6560;
   margin: 0;
 }
 
@@ -241,28 +242,28 @@ async function onSubmit() {
   align-items: center;
   gap: 0.375rem;
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: #374151;
+  font-weight: 450;
+  color: #2d2a26;
 }
 
 .form-input {
   padding: 0.875rem 1rem;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  border: 1px solid #e5e0dc;
+  border-radius: 10px;
   font-size: 0.9375rem;
-  background: #fafafa;
+  background: #fdfcfb;
   transition: all 0.2s ease;
 }
 
 .form-input:hover {
-  border-color: #d1d5db;
+  border-color: #d5d0cc;
 }
 
 .form-input:focus {
   outline: none;
-  border-color: #d97706;
+  border-color: #da7756;
   background: white;
-  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1);
+  box-shadow: 0 0 0 2px rgba(218, 119, 86, 0.1);
 }
 
 .form-input:disabled {
@@ -276,24 +277,23 @@ async function onSubmit() {
   justify-content: center;
   gap: 0.5rem;
   padding: 0.875rem 1.5rem;
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+  background: #da7756;
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   font-size: 0.9375rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: 0.5rem;
 }
 
 .submit-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.4);
+  background: #c4684a;
 }
 
 .submit-btn:active:not(:disabled) {
-  transform: translateY(0);
+  background: #b85d42;
 }
 
 .submit-btn:disabled {
@@ -321,14 +321,14 @@ async function onSubmit() {
 
 .toggle-text {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: #6b6560;
 }
 
 .toggle-btn {
   background: none;
   border: none;
-  color: #d97706;
-  font-weight: 600;
+  color: #da7756;
+  font-weight: 500;
   font-size: 0.875rem;
   cursor: pointer;
   margin-left: 0.25rem;
@@ -336,7 +336,7 @@ async function onSubmit() {
 }
 
 .toggle-btn:hover:not(:disabled) {
-  color: #b45309;
+  color: #c4684a;
   text-decoration: underline;
 }
 
@@ -349,8 +349,7 @@ async function onSubmit() {
   text-align: center;
   margin-top: 1.5rem;
   font-size: 0.8125rem;
-  color: #92400e;
-  opacity: 0.8;
+  color: #9a9590;
 }
 
 @media (max-width: 480px) {

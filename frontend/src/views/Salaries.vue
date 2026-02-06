@@ -256,9 +256,9 @@ onMounted(load)
   gap: 0.375rem;
   padding: 0.5rem 0.75rem;
   background: transparent;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e5e0dc;
   border-radius: 8px;
-  color: #6b7280;
+  color: #6b6560;
   font-size: 0.8125rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -266,22 +266,23 @@ onMounted(load)
 }
 
 .back-btn:hover {
-  background: #f9fafb;
-  color: #374151;
-  border-color: #d1d5db;
+  background: #faf5f3;
+  color: #2d2a26;
+  border-color: #d5d0cc;
 }
 
 .header-title h1 {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.875rem;
-  font-weight: 600;
-  color: #111827;
+  font-weight: 500;
+  color: #2d2a26;
   margin: 0;
   letter-spacing: -0.02em;
 }
 
 .header-subtitle {
   font-size: 0.9375rem;
-  color: #6b7280;
+  color: #6b6560;
   margin: 0.25rem 0 0 0;
 }
 
@@ -305,25 +306,25 @@ onMounted(load)
 }
 
 .btn-primary {
-  background: #d97706;
-  border: 1px solid #d97706;
+  background: #da7756;
+  border: 1px solid #da7756;
   color: white;
 }
 
 .btn-primary:hover {
-  background: #b45309;
-  border-color: #b45309;
+  background: #c4684a;
+  border-color: #c4684a;
 }
 
 .btn-secondary {
   background: white;
-  border: 1px solid #e5e7eb;
-  color: #374151;
+  border: 1px solid #e5e0dc;
+  color: #2d2a26;
 }
 
 .btn-secondary:hover {
-  background: #f9fafb;
-  border-color: #d1d5db;
+  background: #faf5f3;
+  border-color: #d5d0cc;
 }
 
 @media (max-width: 768px) {

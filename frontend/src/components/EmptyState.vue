@@ -18,6 +18,6 @@ const props = defineProps({
 <style scoped>
 .empty-container { padding: 3rem; text-align: center; }
 .empty-icon { font-size: 4rem; margin-bottom: 1rem; }
-.empty-title { font-size: 1.5rem; font-weight: 600; color: #111827; margin-bottom: 0.5rem; }
-.empty-description { color: #6b7280; margin-bottom: 1.5rem; }
+.empty-title { font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; font-size: 1.5rem; font-weight: 500; color: #2d2a26; margin-bottom: 0.5rem; }
+.empty-description { color: #6b6560; margin-bottom: 1.5rem; }
 </style>

@@ -138,7 +138,7 @@ function onTabClick(tab) {
 
 <style scoped>
 .stats-tabs {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .stats-content {
@@ -267,7 +267,7 @@ function onTabClick(tab) {
 .toolbar-filters :deep(.el-input__wrapper:hover),
 .toolbar-filters :deep(.el-date-editor .el-input__wrapper:hover) {
   border-color: var(--primary-hover) !important;
-  background-color: #f0f7ff;
+  background-color: #faf5f3;
 }
 
 .toolbar-filters :deep(.el-select__wrapper.is-focus),

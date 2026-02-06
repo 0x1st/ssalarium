@@ -13,7 +13,7 @@ const activeTab = ref('monthly')
 const currentPage = ref(1)
 const pageSize = ref(20)
 
-const headerCellStyle = { background: '#f9fafb', padding: '12px 16px', color: '#374151', fontWeight: 600, fontSize: '13px' }
+const headerCellStyle = { background: '#faf5f3', padding: '12px 16px', color: '#2d2a26', fontWeight: 600, fontSize: '13px' }
 const cellStyle = { padding: '14px 16px', fontSize: '14px' }
 
 const hasMonthlyData = computed(() => (monthly.value?.length || 0) > 0)
@@ -533,15 +533,16 @@ watch(() => stats.refreshToken, () => { load() })
 }
 
 :deep(.el-card) {
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  border: 1px solid #e5e0dc;
+  box-shadow: none;
+  transition: all 0.2s ease;
 }
 
 :deep(.el-card:hover) {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  border-color: #d5d0cc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 :deep(.el-card__header) {
@@ -565,7 +566,7 @@ watch(() => stats.refreshToken, () => { load() })
 .tabs-header {
   display: flex;
   gap: 8px;
-  background: #f9fafb;
+  background: #faf5f3;
   padding: 4px;
   border-radius: 8px;
 }
@@ -574,7 +575,7 @@ watch(() => stats.refreshToken, () => { load() })
   padding: 8px 20px;
   border: none;
   background: transparent;
-  color: #6b7280;
+  color: #6b6560;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -583,13 +584,13 @@ watch(() => stats.refreshToken, () => { load() })
 }
 
 .tab-btn:hover {
-  background: #e5e7eb;
-  color: #374151;
+  background: #f5f3f1;
+  color: #2d2a26;
 }
 
 .tab-btn.active {
   background: white;
-  color: #d97706;
+  color: #da7756;
   font-weight: 600;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -604,7 +605,7 @@ watch(() => stats.refreshToken, () => { load() })
   padding: 16px;
   display: flex;
   justify-content: center;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid #e5e0dc;
 }
 
 :deep(.el-table) {
@@ -613,7 +614,7 @@ watch(() => stats.refreshToken, () => { load() })
 }
 
 :deep(.el-table th) {
-  background: #f9fafb;
+  background: #faf5f3;
 }
 
 :deep(.el-table .cell) {
@@ -623,23 +624,23 @@ watch(() => stats.refreshToken, () => { load() })
 }
 
 :deep(.el-table .highlight-col) .cell {
-  background: rgba(251, 191, 36, 0.08);
+  background: rgba(218, 119, 86, 0.08);
   font-weight: 600;
 }
 
 :deep(.el-table .highlight-strong) .cell {
-  background: linear-gradient(135deg, rgba(5, 150, 105, 0.1) 0%, rgba(16, 185, 129, 0.15) 100%);
+  background: rgba(90, 138, 110, 0.1);
   font-weight: 700;
-  color: #059669;
+  color: #5a8a6e;
 }
 
 :deep(.el-table .total-row) {
-  background: #f3f4f6;
+  background: #faf5f3;
   font-weight: 700;
 }
 
 :deep(.el-table .total-row) td {
-  border-top: 2px solid #d1d5db;
+  border-top: 2px solid #e5e0dc;
 }
 
 .empty-container {
@@ -653,14 +654,15 @@ watch(() => stats.refreshToken, () => { load() })
 }
 
 .empty-title {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   font-size: 1.5rem;
-  font-weight: 600;
-  color: #111827;
+  font-weight: 500;
+  color: #2d2a26;
   margin-bottom: 0.5rem;
 }
 
 .empty-description {
-  color: #6b7280;
+  color: #6b6560;
   margin-bottom: 1.5rem;
 }
 

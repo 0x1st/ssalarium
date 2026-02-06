@@ -28,7 +28,7 @@ defineProps({
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   padding: 0 4px;
   min-height: 68px;
 }
@@ -38,20 +38,18 @@ defineProps({
 }
 
 .page-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #2c3e50;
-  margin: 0 0 8px 0;
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: #da7756;
+  margin: 0 0 6px 0;
   line-height: 1.2;
-  background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  letter-spacing: -0.01em;
 }
 
 .page-subtitle {
-  font-size: 16px;
-  color: #7f8c8d;
+  font-size: 15px;
+  color: #6b6560;
   margin: 0;
   line-height: 1.5;
 }
@@ -69,11 +67,11 @@ defineProps({
     gap: 16px;
     min-height: auto;
   }
-  
+
   .page-title {
-    font-size: 24px;
+    font-size: 22px;
   }
-  
+
   .page-subtitle {
     font-size: 14px;
   }

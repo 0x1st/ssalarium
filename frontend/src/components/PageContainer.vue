@@ -15,20 +15,20 @@ defineProps({
 
 <style scoped>
 .page-container {
-  padding: 24px;
-  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  padding: 32px;
+  background: #fdfcfb;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 @media (max-width: 768px) {
   .page-container {
-    padding: 16px;
+    padding: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .page-container {
-    padding: 12px;
+    padding: 16px;
   }
 }
 </style>

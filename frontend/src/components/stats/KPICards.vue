@@ -23,13 +23,8 @@ const props = defineProps({
 export default {
   methods: {
     getGradient(index, color) {
-      const gradients = [
-        'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
-        'linear-gradient(135deg, #059669 0%, #10b981 100%)',
-        'linear-gradient(135deg, #ea580c 0%, #f97316 100%)',
-        'linear-gradient(135deg, #b45309 0%, #d97706 100%)'
-      ];
-      return gradients[index % gradients.length];
+      const colors = ['#da7756', '#5a8a6e', '#c9a227', '#c4684a'];
+      return colors[index % colors.length];
     },
     getIcon(index) {
       const icons = ['💰', '📉', '💵', '📊'];
@@ -40,20 +35,20 @@ export default {
 </script>
 
 <style scoped>
-.kpi-grid { 
-  display: grid; 
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 16px; 
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
 }
 
-.kpi-card { 
+.kpi-card {
   background: white;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e0dc;
   display: flex;
   align-items: center;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   position: relative;
   overflow: hidden;
 }
@@ -63,37 +58,38 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 3px;
+  bottom: 0;
+  width: 3px;
   background: var(--gradient);
 }
 
 .kpi-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  border-color: #d5d0cc;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .kpi-icon {
-  font-size: 28px;
+  font-size: 24px;
   margin-right: 14px;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .kpi-content {
   flex: 1;
 }
 
-.kpi-label { 
-  font-size: 13px; 
-  color: #7f8c8d; 
-  font-weight: 500;
+.kpi-label {
+  font-size: 13px;
+  color: #6b6560;
+  font-weight: 450;
   margin-top: 2px;
 }
 
-.kpi-value { 
-  font-size: 20px; 
-  font-weight: 700; 
-  color: #2c3e50;
+.kpi-value {
+  font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #2d2a26;
 }
 
 @media (max-width: 992px) {

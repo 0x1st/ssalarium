@@ -3,36 +3,36 @@ import { formatCurrency } from './number'
 
 // Register a unified theme for all charts
 const theme = {
-  color: ['#409EFF', '#67C23A', '#E6A23C', '#8e44ad', '#1abc9c', '#F56C6C', '#909399'],
+  color: ['#da7756', '#5a8a6e', '#c9a227', '#8e6b5a', '#6b9a8a', '#c45c5c', '#9a9590'],
   textStyle: {
     fontFamily: 'Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, "Noto Sans", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif',
     fontSize: 12,
-    color: '#334155',
+    color: '#2d2a26',
   },
   // Unified layout to avoid overlapping titles/legends with plotting area
   grid: { top: 24, right: 24, bottom: 56, left: 48, containLabel: true },
   tooltip: {
-    backgroundColor: 'rgba(17,24,39,0.9)',
+    backgroundColor: 'rgba(45,42,38,0.9)',
     borderWidth: 0,
     textStyle: { color: '#fff', fontSize: 12 },
-    extraCssText: 'box-shadow:0 6px 18px rgba(0,0,0,0.2); border-radius:8px; padding:10px 12px;',
+    extraCssText: 'box-shadow:0 4px 12px rgba(0,0,0,0.15); border-radius:8px; padding:10px 12px;',
   },
   legend: {
     bottom: 8,
     left: 'center',
-    textStyle: { color: '#475569' },
+    textStyle: { color: '#6b6560' },
   },
   categoryAxis: {
-    axisLine: { lineStyle: { color: '#e2e8f0' } },
-    axisTick: { alignWithLabel: true, lineStyle: { color: '#e2e8f0' } },
-    axisLabel: { color: '#64748b', rotate: 0, interval: 'auto', margin: 8, hideOverlap: true },
+    axisLine: { lineStyle: { color: '#e5e0dc' } },
+    axisTick: { alignWithLabel: true, lineStyle: { color: '#e5e0dc' } },
+    axisLabel: { color: '#6b6560', rotate: 0, interval: 'auto', margin: 8, hideOverlap: true },
     splitLine: { show: false },
   },
   valueAxis: {
     axisLine: { show: false },
     axisTick: { show: false },
-    axisLabel: { color: '#64748b' },
-    splitLine: { lineStyle: { color: '#e5e7eb', type: 'dashed' } },
+    axisLabel: { color: '#6b6560' },
+    splitLine: { lineStyle: { color: '#e5e0dc', type: 'dashed' } },
   },
 }
 
@@ -81,16 +81,16 @@ export function responsiveResize(instance) {
 }
 
 export const palette = {
-  primary: '#409EFF',
-  success: '#67C23A',
-  warning: '#E6A23C',
-  danger: '#F56C6C',
-  info: '#909399',
-  blue: '#409EFF',
-  green: '#67C23A',
-  orange: '#E6A23C',
-  purple: '#8e44ad',
-  teal: '#1abc9c',
+  primary: '#da7756',
+  success: '#5a8a6e',
+  warning: '#c9a227',
+  danger: '#c45c5c',
+  info: '#9a9590',
+  blue: '#6b9a8a',
+  green: '#5a8a6e',
+  orange: '#da7756',
+  purple: '#8e6b5a',
+  teal: '#6b9a8a',
 }
 
 export function gradient(color1, color2) {
