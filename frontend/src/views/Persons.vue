@@ -4,7 +4,7 @@ import api from '../utils/axios'
 import { useUserStore } from '../store/user'
 import { useStatsStore } from '../store/stats'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { Plus, Users, DollarSign, Trash2, Edit, User, TrendingUp, X } from 'lucide-vue-next'
+import { Plus, Users, DollarSign, Trash2, Edit, User, TrendingUp, X, RefreshCw } from 'lucide-vue-next'
 import PageContainer from '../components/PageContainer.vue'
 import PageHeader from '../components/PageHeader.vue'
 import StatsCards from '../components/StatsCards.vue'
@@ -180,9 +180,10 @@ onMounted(load)
       <template #header>
         <div class="card-header">
           <span class="card-title">用户信息</span>
-          <el-button @click="load" size="small" type="primary" plain class="refresh-button">
+          <button class="btn-refresh" @click="load">
+            <RefreshCw :size="14" />
             刷新
-          </el-button>
+          </button>
         </div>
       </template>
       
@@ -366,10 +367,25 @@ onMounted(load)
 }
 
 /* 统一刷新按钮样式 */
-.refresh-button {
+.btn-refresh {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: #f5f3f1;
+  border: 1px solid #e5e0dc;
+  border-radius: 8px;
+  color: #6b6560;
+  font-size: 0.8125rem;
+  font-weight: 450;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-refresh:hover {
+  background: #ebe8e5;
+  border-color: #d5d0cc;
+  color: #2d2a26;
 }
 
 .persons-grid {

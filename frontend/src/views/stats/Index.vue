@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted, watch, onBeforeUnmount, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { Refresh } from '@element-plus/icons-vue'
+import { RefreshCw } from 'lucide-vue-next'
 import { useStatsStore } from '../../store/stats'
 import { useUserStore } from '../../store/user'
 import PageContainer from '../../components/PageContainer.vue'
@@ -108,20 +108,14 @@ function onTabClick(tab) {
             </el-select>
           </el-form-item>
 
-          <el-button
-            size="small"
-            type="primary"
-            plain
-            aria-label="刷新"
-            class="toolbar-refresh"
-            :loading="stats.isRefreshing"
+          <button
+            class="btn-refresh"
+            :class="{ refreshing: stats.isRefreshing }"
             @click="stats.refreshAll()"
           >
-            <el-icon>
-              <Refresh />
-            </el-icon>
-            <span class="btn-text">刷新</span>
-          </el-button>
+            <RefreshCw :size="14" />
+            <span>刷新</span>
+          </button>
         </el-form>
       </template>
     </PageHeader>
@@ -172,15 +166,44 @@ function onTabClick(tab) {
   text-align: left;
 }
 
-/* Toolbar refresh button styling */
-.toolbar-refresh {
-  height: 32px !important;
-  min-height: 32px !important;
-  width: auto !important;
-  padding: 0 12px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 4px !important;
+/* Refresh button styling */
+.btn-refresh {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.75rem;
+  background: #f5f3f1;
+  border: 1px solid #e5e0dc;
+  border-radius: 8px;
+  color: #6b6560;
+  font-size: 0.8125rem;
+  font-weight: 450;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  height: 32px;
+}
+
+.btn-refresh:hover {
+  background: #ebe8e5;
+  border-color: #d5d0cc;
+  color: #2d2a26;
+}
+
+.btn-refresh svg {
+  transition: transform 0.5s ease;
+}
+
+.btn-refresh.refreshing svg {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Input number controls styling */
@@ -209,10 +232,6 @@ function onTabClick(tab) {
 
 .toolbar-filters :deep(.el-input-number__decrease) {
   border-top: 1px solid var(--primary-color) !important;
-}
-
-.toolbar-refresh :deep(.el-icon) {
-  font-size: 16px;
 }
 
 /* Remove focus outline from filter controls */
@@ -302,14 +321,14 @@ function onTabClick(tab) {
 }
 
 @media (max-width: 520px) {
-  .toolbar-refresh .btn-text {
+  .btn-refresh span {
     display: none;
   }
 
-  .toolbar-refresh {
+  .btn-refresh {
     justify-content: center;
     min-width: 36px;
-    padding: 0 10px;
+    padding: 0.5rem;
   }
 }
 </style>
