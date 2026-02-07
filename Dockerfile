@@ -45,7 +45,7 @@ EXPOSE 8000
 # 运行时配置（可由 docker-compose 或部署平台覆盖）
 ENV UVICORN_HOST=0.0.0.0 \
     UVICORN_PORT=8000 \
-    UVICORN_WORKERS=2
+    UVICORN_WORKERS=1
 
 # 健康检查：访问自动生成的文档页，若失败则判定不健康
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \

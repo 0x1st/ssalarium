@@ -16,7 +16,7 @@ services:
       - CORS_ORIGINS=${CORS_ORIGINS:-*}
       - UVICORN_HOST=0.0.0.0
       - UVICORN_PORT=8000
-      - UVICORN_WORKERS=2
+      - UVICORN_WORKERS=1
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/docs"]
       interval: 30s
