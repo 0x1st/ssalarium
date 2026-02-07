@@ -8,6 +8,14 @@ const props = defineProps({
     type: Array,
     required: true
   },
+  customFields: {
+    type: Array,
+    default: () => []
+  },
+  categories: {
+    type: Object,
+    default: () => ({ income: [], deduction: [] })
+  },
   loading: {
     type: Boolean,
     default: false
@@ -20,9 +28,34 @@ function formatCurrency(amount) {
   return formatCurrencyUtil(amount, { decimals: 2 })
 }
 
-function computeCustomIncome(salary) {
-  if (!salary.custom_fields) return 0
-  return Object.values(salary.custom_fields).reduce((sum, val) => sum + (val > 0 ? val : 0), 0)
+const customFieldMap = computed(() => {
+  const map = new Map()
+  for (const field of props.customFields) {
+    map.set(field.field_key, field)
+  }
+  return map
+})
+
+const incomeCategoryOrder = computed(() => {
+  const fromCategories = props.categories?.income || []
+  return fromCategories.map(c => c.key)
+})
+
+const incomeCustomCategories = computed(() => {
+  const present = new Set(
+    props.customFields
+      .filter(f => f.field_type === 'income')
+      .map(f => f.category)
+  )
+  const ordered = incomeCategoryOrder.value.filter(k => present.has(k))
+  if (ordered.length) return ordered
+  return Array.from(present)
+})
+
+function categoryLabel(key) {
+  const cats = props.categories?.income || []
+  const found = cats.find(c => c.key === key)
+  return found ? found.label : key
 }
 
 // Table styles matching stats table
@@ -30,10 +63,25 @@ const headerCellStyle = { background: '#faf5f3', padding: '12px 16px', color: '#
 const cellStyle = { padding: '14px 16px', fontSize: '14px' }
 
 const tableData = computed(() => {
-  return props.salaries.map(s => ({
-    ...s,
-    customIncome: computeCustomIncome(s)
-  }))
+  return props.salaries.map(s => {
+    const totals = {}
+    for (const key of incomeCustomCategories.value) {
+      totals[key] = 0
+    }
+    if (s.custom_fields) {
+      for (const [fieldKey, rawValue] of Object.entries(s.custom_fields)) {
+        const def = customFieldMap.value.get(fieldKey)
+        if (!def || def.field_type !== 'income') continue
+        const amount = Number(rawValue) || 0
+        if (!(def.category in totals)) totals[def.category] = 0
+        totals[def.category] += amount
+      }
+    }
+    return {
+      ...s,
+      customCategoryTotals: totals,
+    }
+  })
 })
 </script>
 
@@ -80,9 +128,19 @@ const tableData = computed(() => {
           <template #default="{ row }">{{ formatCurrency(row.performance_salary) }}</template>
         </el-table-column>
 
-        <el-table-column prop="customIncome" label="自定义收入" width="150" min-width="130" sortable align="right">
+        <el-table-column
+          v-for="cat in incomeCustomCategories"
+          :key="cat"
+          :label="categoryLabel(cat)"
+          width="150"
+          min-width="130"
+          sortable
+          align="right"
+        >
           <template #default="{ row }">
-            <span class="text-muted">{{ formatCurrency(row.customIncome) }}</span>
+            <span class="text-muted">
+              {{ formatCurrency(row.customCategoryTotals?.[cat] || 0) }}
+            </span>
           </template>
         </el-table-column>
 

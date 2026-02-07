@@ -27,6 +27,7 @@ const filterYear = ref(null)
 const filterMonth = ref(null)
 
 const customFields = ref([])
+const categories = ref({ income: [], deduction: [] })
 
 const stats = computed(() => {
   if (filteredList.value.length === 0) return { total: 0, average: 0, latest: 0 }
@@ -69,6 +70,13 @@ async function load() {
   if (!personId.value) return
   loading.value = true
   try {
+    try {
+      const { data: categoriesData } = await api.get('/salary-fields/categories')
+      categories.value = categoriesData
+    } catch {
+      // optional; fall back to keys when unavailable
+    }
+
     const { data: fieldsData } = await api.get('/salary-fields/')
     customFields.value = fieldsData
 
@@ -213,6 +221,8 @@ onMounted(load)
     <SalaryTable
       :salaries="filteredList"
       :loading="loading"
+      :custom-fields="customFields"
+      :categories="categories"
       @edit="openEdit"
       @delete="handleDelete"
     />
