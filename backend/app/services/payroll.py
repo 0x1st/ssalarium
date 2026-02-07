@@ -29,7 +29,8 @@ def compute_payroll(
     performance_deduction=None,
     **kwargs,  # Accept any other fields gracefully
 ):
-    D = lambda v: v if isinstance(v, Decimal) else Decimal(str(v or 0))
+    def D(v):
+        return v if isinstance(v, Decimal) else Decimal(str(v or 0))
     q = Decimal("0.01")
 
     base_salary = D(base_salary)
@@ -86,7 +87,9 @@ def compute_payroll(
     ).quantize(q, rounding=ROUND_HALF_UP)
 
     gross_income = total_income
-    net_income = (gross_income - total_deductions - tax).quantize(q, rounding=ROUND_HALF_UP)
+    net_income = (gross_income - total_deductions - tax).quantize(
+        q, rounding=ROUND_HALF_UP
+    )
 
     # Actual take-home = cash income - deductions - tax
     # Excludes non-cash benefits

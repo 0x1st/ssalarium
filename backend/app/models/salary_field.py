@@ -34,7 +34,9 @@ class SalaryField(Model):
     name = fields.CharField(max_length=64)  # Display name, e.g., "春节奖金"
     field_key = fields.CharField(max_length=64)  # Unique key, e.g., "spring_bonus"
     field_type = fields.CharField(max_length=16)  # "income" or "deduction"
-    category = fields.CharField(max_length=32)  # e.g., "bonus", "allowance", "insurance"
+    category = fields.CharField(
+        max_length=32
+    )  # e.g., "bonus", "allowance", "insurance"
     is_non_cash = fields.BooleanField(default=False)  # Excluded from actual_take_home
     display_order = fields.IntField(default=0)  # For UI ordering
     is_active = fields.BooleanField(default=True)  # Soft delete

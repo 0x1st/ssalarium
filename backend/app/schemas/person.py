@@ -18,7 +18,12 @@ class PersonCreate(BaseModel):
     medical_history: Decimal = Field(default=Decimal("0.00"), ge=0)
     housing_fund_history: Decimal = Field(default=Decimal("0.00"), ge=0)
 
-    @field_validator("pension_history", "medical_history", "housing_fund_history", mode="before")
+    @field_validator(
+        "pension_history",
+        "medical_history",
+        "housing_fund_history",
+        mode="before",
+    )
     @classmethod
     def _quantize_create(cls, v):
         return _q2(v)
@@ -31,7 +36,12 @@ class PersonUpdate(BaseModel):
     medical_history: Optional[Decimal] = Field(default=None, ge=0)
     housing_fund_history: Optional[Decimal] = Field(default=None, ge=0)
 
-    @field_validator("pension_history", "medical_history", "housing_fund_history", mode="before")
+    @field_validator(
+        "pension_history",
+        "medical_history",
+        "housing_fund_history",
+        mode="before",
+    )
     @classmethod
     def _quantize_update(cls, v):
         return _q2(v)

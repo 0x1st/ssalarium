@@ -43,7 +43,9 @@ async def create_person(payload: PersonCreate, user=Depends(get_current_user)):
 
 
 @router.put("/{person_id}", response_model=PersonOut)
-async def update_person(person_id: int, payload: PersonUpdate, user=Depends(get_current_user)):
+async def update_person(
+    person_id: int, payload: PersonUpdate, user=Depends(get_current_user)
+):
     p = await Person.filter(id=person_id, user_id=user.id).first()
     if not p:
         raise HTTPException(status_code=404, detail="人员不存在")

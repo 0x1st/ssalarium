@@ -26,7 +26,8 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
-    # Add simple no-store cache headers for stats endpoints to ensure fresh data after salary mutations
+    # Add no-store cache headers for stats endpoints to ensure fresh data
+    # after salary mutations.
     @app.middleware("http")
     async def add_cache_headers(request, call_next):
         response = await call_next(request)
@@ -42,7 +43,9 @@ def create_app() -> FastAPI:
     app.include_router(persons_router, prefix="/api/persons", tags=["persons"])
     app.include_router(salaries_router, prefix="/api/salaries", tags=["salaries"])
     app.include_router(stats_router, prefix="/api/stats", tags=["stats"])
-    app.include_router(salary_fields_router, prefix="/api/salary-fields", tags=["salary-fields"])
+    app.include_router(
+        salary_fields_router, prefix="/api/salary-fields", tags=["salary-fields"]
+    )
 
     register_tortoise(
         app,

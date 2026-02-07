@@ -11,8 +11,10 @@ class Person(Model):
     # Historical cumulative values (before system tracking)
     pension_history = fields.DecimalField(max_digits=15, decimal_places=2, default=0)
     medical_history = fields.DecimalField(max_digits=15, decimal_places=2, default=0)
-    housing_fund_history = fields.DecimalField(max_digits=15, decimal_places=2, default=0)
-    
+    housing_fund_history = fields.DecimalField(
+        max_digits=15, decimal_places=2, default=0
+    )
+
     created_at = fields.DatetimeField(auto_now_add=True)
 
     class Meta:

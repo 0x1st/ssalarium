@@ -3,7 +3,12 @@ from tortoise.exceptions import IntegrityError, DoesNotExist
 
 from ..models import User
 from ..schemas.auth import LoginRequest, RegisterRequest, TokenResponse, UserOut
-from ..utils.auth import verify_password, hash_password, create_access_token, get_current_user
+from ..utils.auth import (
+    verify_password,
+    hash_password,
+    create_access_token,
+    get_current_user,
+)
 
 
 router = APIRouter()
@@ -13,7 +18,9 @@ router = APIRouter()
 async def register(payload: RegisterRequest):
     try:
         hashed_password = hash_password(payload.password)
-        user = await User.create(username=payload.username, password_hash=hashed_password)
+        user = await User.create(
+            username=payload.username, password_hash=hashed_password
+        )
         return UserOut(id=user.id, username=user.username)
     except IntegrityError:
         raise HTTPException(status_code=400, detail="用户名已存在")

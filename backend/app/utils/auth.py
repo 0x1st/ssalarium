@@ -63,7 +63,9 @@ def hash_password(password: str) -> str:
         return pwd_context.hash(password)
 
 
-def create_access_token(subject: dict, expires_minutes: int = ACCESS_TOKEN_EXPIRE_MINUTES) -> str:
+def create_access_token(
+    subject: dict, expires_minutes: int = ACCESS_TOKEN_EXPIRE_MINUTES
+) -> str:
     expire = datetime.utcnow() + timedelta(minutes=expires_minutes)
     to_encode = {"exp": expire, **subject}
     return jwt.encode(to_encode, JWT_SECRET, algorithm=JWT_ALGORITHM)

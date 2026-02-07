@@ -1,7 +1,12 @@
 from fastapi import APIRouter, HTTPException, Depends
 from typing import List
 
-from ..models import SalaryField, INCOME_CATEGORIES, DEDUCTION_CATEGORIES, ALL_CATEGORIES
+from ..models import (
+    SalaryField,
+    INCOME_CATEGORIES,
+    DEDUCTION_CATEGORIES,
+    ALL_CATEGORIES,
+)
 from ..schemas.salary_field import (
     SalaryFieldCreate,
     SalaryFieldUpdate,
@@ -71,7 +76,9 @@ async def create_salary_field(
         user_id=user.id, field_key=payload.field_key
     ).first()
     if existing:
-        raise HTTPException(status_code=400, detail=f"字段标识 '{payload.field_key}' 已存在")
+        raise HTTPException(
+            status_code=400, detail=f"字段标识 '{payload.field_key}' 已存在"
+        )
 
     f = await SalaryField.create(
         user_id=user.id,

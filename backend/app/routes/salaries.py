@@ -133,7 +133,9 @@ async def list_salaries(
 
 
 @router.post("/{person_id}", response_model=SalaryOut)
-async def create_salary(person_id: int, payload: SalaryCreate, user=Depends(get_current_user)):
+async def create_salary(
+    person_id: int, payload: SalaryCreate, user=Depends(get_current_user)
+):
     person = await Person.filter(id=person_id, user_id=user.id).first()
     if not person:
         raise HTTPException(status_code=404, detail="人员不存在")
@@ -180,7 +182,9 @@ async def get_salary(record_id: int, user=Depends(get_current_user)):
 
 
 @router.put("/{record_id}", response_model=SalaryOut)
-async def update_salary(record_id: int, payload: SalaryUpdate, user=Depends(get_current_user)):
+async def update_salary(
+    record_id: int, payload: SalaryUpdate, user=Depends(get_current_user)
+):
     rec = await SalaryRecord.filter(id=record_id, person__user_id=user.id).first()
     if not rec:
         raise HTTPException(status_code=404, detail="记录不存在")

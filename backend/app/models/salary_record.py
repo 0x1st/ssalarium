@@ -15,8 +15,12 @@ class SalaryRecord(Model):
     # Fixed deduction fields (五险一金 + tax)
     pension_insurance = fields.DecimalField(max_digits=15, decimal_places=2, default=0)
     medical_insurance = fields.DecimalField(max_digits=15, decimal_places=2, default=0)
-    unemployment_insurance = fields.DecimalField(max_digits=15, decimal_places=2, default=0)
-    critical_illness_insurance = fields.DecimalField(max_digits=15, decimal_places=2, default=0)
+    unemployment_insurance = fields.DecimalField(
+        max_digits=15, decimal_places=2, default=0
+    )
+    critical_illness_insurance = fields.DecimalField(
+        max_digits=15, decimal_places=2, default=0
+    )
     enterprise_annuity = fields.DecimalField(max_digits=15, decimal_places=2, default=0)
     housing_fund = fields.DecimalField(max_digits=15, decimal_places=2, default=0)
     tax = fields.DecimalField(max_digits=15, decimal_places=2, default=0)
