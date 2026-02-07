@@ -43,7 +43,7 @@ async function loadCategories() {
   try {
     const { data } = await api.get('/salary-fields/categories')
     categories.value = data
-  } catch (error) {
+  } catch {
     ElMessage.error('加载类别失败')
   }
 }
@@ -53,7 +53,7 @@ async function loadFields() {
   try {
     const { data } = await api.get('/salary-fields/', { params: { include_inactive: false } })
     fields.value = data
-  } catch (error) {
+  } catch {
     ElMessage.error('加载字段失败')
   } finally {
     loading.value = false

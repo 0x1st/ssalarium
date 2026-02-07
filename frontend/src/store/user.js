@@ -14,7 +14,7 @@ export const useUserStore = defineStore('user', {
       try {
         const stats = useStatsStore()
         stats.resetAll()
-      } catch (e) {
+      } catch {
         // ignore if store not initialized yet
       }
     },
@@ -27,7 +27,7 @@ export const useUserStore = defineStore('user', {
       try {
         const stats = useStatsStore()
         stats.resetAll()
-      } catch (e) {
+      } catch {
         // ignore if store not initialized yet
       }
     },

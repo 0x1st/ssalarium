@@ -3,7 +3,6 @@ import { ref, onMounted, watch, onBeforeUnmount, computed } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { RefreshCw } from 'lucide-vue-next'
 import { useStatsStore } from '../../store/stats'
-import { useUserStore } from '../../store/user'
 import PageContainer from '../../components/PageContainer.vue'
 import PageHeader from '../../components/PageHeader.vue'
 
@@ -18,7 +17,6 @@ const tabs = [
 const route = useRoute()
 const router = useRouter()
 const stats = useStatsStore()
-const user = useUserStore()
 
 const activeTab = ref('stats-net')
 

@@ -1,16 +1,13 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import api from '../utils/axios'
-import { useUserStore } from '../store/user'
 import { useStatsStore } from '../store/stats'
 import { ElMessage, ElMessageBox } from 'element-plus'
-import { Plus, Users, DollarSign, Trash2, Edit, User, TrendingUp, X, RefreshCw } from 'lucide-vue-next'
+import { Plus, DollarSign, Trash2, Edit, User, TrendingUp, X, RefreshCw } from 'lucide-vue-next'
 import PageContainer from '../components/PageContainer.vue'
 import PageHeader from '../components/PageHeader.vue'
 import StatsCards from '../components/StatsCards.vue'
 
-
-const user = useUserStore()
 const statsStore = useStatsStore()
 const list = ref([])
 const dialogVisible = ref(false)
@@ -25,20 +22,10 @@ const form = ref({
 })
 const loading = ref(false)
 
-// Dialog title
-const dialogTitle = computed(() => (isEditing.value ? '编辑人员' : '添加人员'))
-
 // Computed properties for statistics
 const currentMonth = computed(() => {
   const month = new Date().getMonth() + 1
   return `${month}月`
-})
-
-const completeProfileRate = computed(() => {
-  if (list.value.length === 0) return '0%'
-  const completeProfiles = list.value.filter(person => person.note && person.note.trim()).length
-  const rate = Math.round((completeProfiles / list.value.length) * 100)
-  return `${rate}%`
 })
 
 // Stats cards configuration
@@ -55,7 +42,7 @@ async function load() {
   try {
     const { data } = await api.get('/persons/')
     list.value = data
-  } catch (error) {
+  } catch {
     ElMessage.error('加载人员数据失败')
   } finally {
     loading.value = false

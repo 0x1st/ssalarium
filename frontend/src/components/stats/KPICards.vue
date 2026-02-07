@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   items: {
     type: Array,
     default: () => [], // [{ label, value, color }]
@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <div class="kpi-grid">
-    <div v-for="(item, i) in items" :key="i" class="kpi-card" :style="{ '--gradient': getGradient(i, item.color) }">
+    <div v-for="(item, i) in items" :key="i" class="kpi-card" :style="{ '--gradient': getGradient(i) }">
       <div class="kpi-icon">{{ getIcon(i) }}</div>
       <div class="kpi-content">
         <div class="kpi-value">{{ item.value }}</div>
@@ -22,7 +22,7 @@ const props = defineProps({
 <script>
 export default {
   methods: {
-    getGradient(index, color) {
+    getGradient(index) {
       const colors = ['#da7756', '#5a8a6e', '#c9a227', '#c4684a'];
       return colors[index % colors.length];
     },

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { Calendar, Edit, Trash2 } from 'lucide-vue-next'
 import { formatCurrency as formatCurrencyUtil } from '../../utils/number'
 

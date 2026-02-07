@@ -73,7 +73,7 @@ export function responsiveResize(instance) {
       ro = new ResizeObserver(() => instance.resize())
       ro.observe(el)
     }
-  } catch (e) { /* no-op */ }
+  } catch { /* no-op */ }
   return () => {
     window.removeEventListener('resize', handler)
     if (ro) ro.disconnect()

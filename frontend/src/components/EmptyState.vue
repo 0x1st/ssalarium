@@ -1,5 +1,5 @@
 <script setup>
-const props = defineProps({
+defineProps({
   title: { type: String, default: '暂无统计信息记录' },
   description: { type: String, default: '' },
   icon: { type: String, default: '📊' },
