@@ -101,37 +101,37 @@ export const useStatsStore = defineStore('stats', {
 
     // Data loaders
     async loadYearlyStats() {
-      return await this._useCache('yearly', () => getYearlyStats(this.filter))
+      return this._useCache('yearly', () => getYearlyStats(this.filter))
     },
     async loadMonthlyStats() {
-      return await this._useCache('monthly', () => getMonthlyStats(this.filter))
+      return this._useCache('monthly', () => getMonthlyStats(this.filter))
     },
     async loadFamilySummary() {
-      return await this._useCache('family', () => getFamilySummary(this.filter))
+      return this._useCache('family', () => getFamilySummary(this.filter))
     },
     async loadMonthlyNetIncome() {
-      return await this._useCache('netMonthly', () => getMonthlyNetIncome(this.filter))
+      return this._useCache('netMonthly', () => getMonthlyNetIncome(this.filter))
     },
     async loadGrossVsNetMonthly() {
-      return await this._useCache('grossVsNet', () => getGrossVsNetMonthly(this.filter))
+      return this._useCache('grossVsNet', () => getGrossVsNetMonthly(this.filter))
     },
     async loadIncomeComposition() {
-      return await this._useCache('incomeComposition', () => getIncomeComposition(this.filter))
+      return this._useCache('incomeComposition', () => getIncomeComposition(this.filter))
     },
     async loadDeductionsBreakdown() {
-      return await this._useCache('deductions', () => getDeductionsBreakdown(this.filter))
+      return this._useCache('deductions', () => getDeductionsBreakdown(this.filter))
     },
     async loadContributionsCumulative() {
-      return await this._useCache('contribCumulative', () => getContributionsCumulative(this.filter))
+      return this._useCache('contribCumulative', () => getContributionsCumulative(this.filter))
     },
     async loadMonthlyTable() {
-      return await this._useCache('tableMonthly', () => getMonthlyTable(this.filter))
+      return this._useCache('tableMonthly', () => getMonthlyTable(this.filter))
     },
     async loadAnnualTable() {
-      return await this._useCache('tableAnnual', () => getAnnualTable(this.filter))
+      return this._useCache('tableAnnual', () => getAnnualTable(this.filter))
     },
     async loadAnnualMonthlyTable() {
-      return await this._useCache('tableAnnualMonthly', () => getAnnualMonthlyTable(this.filter))
+      return this._useCache('tableAnnualMonthly', () => getAnnualMonthlyTable(this.filter))
     },
 
     // helpers
